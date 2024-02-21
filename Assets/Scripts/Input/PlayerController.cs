@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpForce;
 
 
     // Start is called before the first frame update
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             isGrounded = false;
-            rb.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
         }
 
@@ -46,6 +47,18 @@ public class PlayerController : MonoBehaviour
         Vector2 move = value.Get<Vector2>();
 
         rb.velocity = move * moveSpeed;
+
+        //move continously if holding down the key
+        if (Keyboard.current.aKey.isPressed)
+        {
+            rb.velocity += Vector2.left * moveSpeed;
+        }
+        else if (Keyboard.current.dKey.isPressed)
+        {
+            rb.velocity += Vector2.right * moveSpeed;
+        }
+
+
 
     }
 
