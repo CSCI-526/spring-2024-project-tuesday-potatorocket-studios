@@ -245,7 +245,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 484133424}
   sliderTimer: 30
-  timerIsRunning: 0
 --- !u!1001 &568855426184497566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -622,6 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  jumpForce: 8
 --- !u!114 &7018842949284940353
 MonoBehaviour:
   m_ObjectHideFlags: 0
