@@ -59,17 +59,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "63e8e6df-688c-4f58-8ad0-d0c985c050c6",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WASD",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "down",
                     "id": "536fa191-02f5-44f0-a67d-2abaabdfa59e",
                     "path": "<Keyboard>/s",
