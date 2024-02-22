@@ -13,7 +13,8 @@ public class Roulette : MonoBehaviour
     private float wheelTimer = 0f;
     private float wheelInterval = 5f; // Interval for rotation in seconds
 
-        float smallDelay;
+    private float smallDelay;
+    private float randomPower;
     
 
     private void Start()
@@ -30,7 +31,8 @@ public class Roulette : MonoBehaviour
         wheelTimer += Time.deltaTime;
         if(wheelTimer - wheelInterval > 1 && spinning == 0){ //Spin the wheel
             spinning = 1;
-            rbody.AddTorque(RotatePower);
+            randomPower = Random.Range(-100f, 100f); //Add random power so that you don't land on the same section every spin
+            rbody.AddTorque(RotatePower + randomPower);
         }
 
         if (rbody.angularVelocity > 0) { //Slow the wheel
@@ -45,7 +47,8 @@ public class Roulette : MonoBehaviour
 
             smallDelay +=1*Time.deltaTime; //To prevent update speed issues. Otherwise it thinks the exact moment we sping the wheel as stopped
             if(smallDelay >= 0.1f){
-                print("Stopped");
+                //print("Stopped");
+                GetColor();
                 wheelTimer = 0f; 
                 spinning = 0;
                 smallDelay = 0;
@@ -53,6 +56,42 @@ public class Roulette : MonoBehaviour
 
         }
 
+    }
+
+    private void GetColor(){
+        float mySector = transform.eulerAngles.z;
+        if (mySector > 0 && mySector <= 45)
+        {
+            print("Dark Blue");
+        }
+        else if (mySector > 45 && mySector <= 90)
+        {
+            print("Blue");
+        }
+        else if (mySector > 90 && mySector <= 135)
+        {
+            print("Dark Green");
+        }
+        else if (mySector > 135 && mySector <= 180)
+        {
+            print("Green");
+        }
+        else if (mySector > 180 && mySector <= 225)
+        {
+            print("Yellow");
+        }
+        else if (mySector > 225 && mySector <= 270)
+        {
+            print("Orange");
+        }
+        else if (mySector > 270 && mySector <= 315)
+        {
+            print("Red");
+        }
+        else if (mySector > 315 && mySector <= 360)
+        {
+            print("Pink");
+        }
     }
 
 }
