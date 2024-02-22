@@ -226,25 +226,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &754009835 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3275019380664649293, guid: b4633c4c192f747ff9de4fb3828d5709, type: 3}
-  m_PrefabInstance: {fileID: 568855426184497566}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &754009837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 754009835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97281223c3b714c6596e1390bf32efdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 484133424}
-  sliderTimer: 30
 --- !u!1001 &568855426184497566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -297,13 +278,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7835279224378985778, guid: b4633c4c192f747ff9de4fb3828d5709, type: 3}
+      propertyPath: slider
+      value: 
+      objectReference: {fileID: 484133424}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3275019380664649293, guid: b4633c4c192f747ff9de4fb3828d5709, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 754009837}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4633c4c192f747ff9de4fb3828d5709, type: 3}
 --- !u!1001 &2485641904656753162
 PrefabInstance:
@@ -397,18 +379,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5322643667518912781, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5322643667518912781, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8513136623971427933, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -487,10 +457,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
-    - target: {fileID: 5761089365014287944, guid: 2282f07af4c1f4a7495d1732b6a7a029, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6131414968126987809, guid: 2282f07af4c1f4a7495d1732b6a7a029, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0307
@@ -548,10 +514,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4145206575769758862, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5290221654136136761, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -595,63 +557,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 274690968891980331, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7018842949284940353}
-    - targetCorrespondingSourceObject: {fileID: 274690968891980331, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7018842949284940352}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
---- !u!1 &7018842949284940351 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 274690968891980331, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
-  m_PrefabInstance: {fileID: 7018842949284940350}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7018842949284940352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7018842949284940351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edae50193fe0048229d2d49d82ba7f96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 8
---- !u!114 &7018842949284940353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7018842949284940351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: aeba9a4b08e72445399f3e4574583bf8, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: BasicGameplay
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
