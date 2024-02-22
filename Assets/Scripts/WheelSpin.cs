@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Roulette : MonoBehaviour
+public class WheelSpin : MonoBehaviour
 {
     private float RotatePower;
     private float StopPower;
@@ -31,7 +31,7 @@ public class Roulette : MonoBehaviour
         wheelTimer += Time.deltaTime;
         if(wheelTimer - wheelInterval > 1 && spinning == 0){ //Spin the wheel
             spinning = 1;
-            randomPower = Random.Range(-100f, 100f); //Add random power so that you don't land on the same section every spin
+            randomPower = Random.Range(-200f, 200f); //Add random power so that you don't land on the same section every spin
             rbody.AddTorque(RotatePower + randomPower);
         }
 
