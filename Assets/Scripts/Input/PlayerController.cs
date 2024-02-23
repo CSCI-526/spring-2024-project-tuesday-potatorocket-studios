@@ -80,19 +80,19 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
 
         }
-        //checks if player piccked up a coin
-        if (theCollision.gameObject.name == "Coin")
+        //checks if player picked up a coin
+        if (theCollision.gameObject.tag == "Coin")
         {
+            //do null check in case coin is fading out when player touches it
+            if (theCollision.gameObject != null)
+            {
+                Destroy(theCollision.gameObject);
 
-            Destroy(theCollision.gameObject);
+            }
             coinCount++;
             coinText.text = "Coins: " + coinCount;
-
         }
     }
-
-
-
 
 
 
