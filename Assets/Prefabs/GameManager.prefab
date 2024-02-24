@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4727226625767854341}
   - component: {fileID: 7835279224378985778}
-  - component: {fileID: -2649202768084671872}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,16 +46,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
   sliderTimer: 30
---- !u!114 &-2649202768084671872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3275019380664649293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d186fd8cf17249a5a0247ad283a6715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 8917858935843837517, guid: 37ec636e7f6374660833a1d2fa6b349d, type: 3}
