@@ -55,12 +55,8 @@ public class BulletSpawner : MonoBehaviour
                 direction = direction * -1f;
             } 
         } else if (spawnerType == SpawnerType.Left) {
-
-            if ((angle < 90f) && (angle > -90f)) {
+            if ((transform.localRotation.eulerAngles.z < 90f) || (transform.localRotation.eulerAngles.z > 270f)) {
                 direction = direction * -1f;
-            }
-            if (angle > 180f) {
-                angle -= 360f;
             }
         } else if (spawnerType == SpawnerType.Right) {
             if (angle > 180f) {
@@ -71,6 +67,7 @@ public class BulletSpawner : MonoBehaviour
             } 
         }
         transform.Rotate(0, 0, rotationSpeed * direction * Time.deltaTime);
+
         //if (timer > cooldown) {
         if ((cooldownCheck == false) && (cooldownTimer > cooldown)) {
             cooldownCheck = true;
