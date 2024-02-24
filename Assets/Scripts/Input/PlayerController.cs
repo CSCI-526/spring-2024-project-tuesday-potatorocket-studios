@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
-
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForce;
 
@@ -27,15 +26,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        if (horizontalInput != 0)
-        {
-            Vector3 movement = new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime;
-            transform.Translate(movement);
 
-        }
     }
-
 
     //jump with spacebar or W
     private void OnJump()
@@ -49,22 +41,32 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
-
-    /* Refactored for continuous movement in update function instead 
     private void OnWASD(InputValue value)
-     {
+    {
 
-       //Vector2 move = value.Get<Vector2>();
-         //rb.velocity = move * moveSpeed;
+        Vector2 move = value.Get<Vector2>();
 
-     }*/
+        rb.velocity = move * moveSpeed;
+
+        //move continously if holding down the key
+        if (Keyboard.current.aKey.isPressed)
+        {
+            rb.velocity += Vector2.left * moveSpeed;
+        }
+        else if (Keyboard.current.dKey.isPressed)
+        {
+            rb.velocity += Vector2.right * moveSpeed;
+        }
+
+
+
+    }
 
 
     //checks if player is on the ground
     void OnCollisionEnter2D(Collision2D theCollision)
     {
-        if (theCollision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (theCollision.gameObject.name == "Ground")
         {
 
             isGrounded = true;
