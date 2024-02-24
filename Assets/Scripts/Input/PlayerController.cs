@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     //checks if player is on the ground
     void OnCollisionEnter2D(Collision2D theCollision)
     {
-        if (theCollision.gameObject.name == "Ground")
+        if (theCollision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
 
             isGrounded = true;
