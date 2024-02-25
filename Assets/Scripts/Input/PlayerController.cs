@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         isGrounded = true;
         healthBar = GameObject.FindWithTag("HealthBar").GetComponent<Image>();
+        invincible = false;
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -89,7 +91,8 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
 
-        if (!invincible) {
+        if (!invincible)
+        {
             if (theCollision.collider.tag == typeOneTrapTag)
             {
                 currentHealth -= typeOneTrapDamage;
