@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class PlayerController : MonoBehaviour
     private float typeTwoTrapDamage = 15;
     private float typeThreeTrapDamage = 20;
 
+    private int coinCount = 0;
+
+    private TextMeshProUGUI coinText;
+
+
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForce;
 
@@ -38,6 +44,9 @@ public class PlayerController : MonoBehaviour
         healthBar = GameObject.FindWithTag("HealthBar").GetComponent<Image>();
         invincible = false;
         currentHealth = maxHealth;
+
+        coinText = GameObject.Find("CoinUI").GetComponent<TextMeshProUGUI>();
+
     }
 
     // Update is called once per frame
@@ -119,6 +128,18 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(MakeVulnerable());
             }
         }
+
+        if (theCollision.gameObject.tag == "Coin")
+        {
+            //do null check in case coin is fading out when player touches it
+            if (theCollision.gameObject != null)
+            {
+                Destroy(theCollision.gameObject);
+
+            }
+            coinCount++;
+            coinText.text = "Coins: " + coinCount;
+        }
     }
 
     private IEnumerator MakeVulnerable()
@@ -127,3 +148,10 @@ public class PlayerController : MonoBehaviour
         invincible = false;
     }
 }
+
+
+
+
+
+
+
