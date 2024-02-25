@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
+    private GameObject player; //sn
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         
     }
 
@@ -23,5 +25,6 @@ public class Spike : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+
     }
 }

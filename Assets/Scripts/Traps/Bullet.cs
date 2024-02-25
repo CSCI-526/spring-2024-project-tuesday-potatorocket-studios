@@ -35,20 +35,24 @@ public class Bullet : MonoBehaviour
         return new Vector2(x + spawnPoint.x, y + spawnPoint.y);
     }
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.tag == "border") {
-            Destroy(this.gameObject);
+    if (collision.tag == "border") {
+        Destroy(this.gameObject); // Destroy the bullet when it hits a border
+    }
+    if (gameObject.tag == "PlayerBullet") {
+        if (collision.tag == "Enemy") {
+            Destroy(collision.gameObject); // Destroy the enemy when hit by a player bullet
+            Destroy(this.gameObject); // Also destroy the bullet
         }
-        if (gameObject.tag == "PlayerBullet") {
-            if (collision.tag == "Enemy") {
-                Destroy(this.gameObject);
-            }
-        } else if (gameObject.tag == "EnemyBullet") {
-            if ((collision.tag == "Player") || (collision.tag == "PlayerBullet")) {
-                Destroy(this.gameObject);
-            }
-            if (collision.tag == "PlayerBullet") {
-                Destroy(this.gameObject);
-            }
+    } else if (gameObject.tag == "EnemyBullet") {
+        if (collision.tag == "Player") {
+            Destroy(collision.gameObject); // Destroy the player when hit by an enemy bullet
+            Destroy(this.gameObject); // Also destroy the bullet
+        }
+        if (collision.tag == "PlayerBullet") {
+            // This condition seems redundant with the above condition within the "EnemyBullet" check
+            // Consider removing it or implementing specific logic for when a bullet hits another bullet
+            Destroy(this.gameObject); // Destroy the enemy bullet when it hits a player bullet
         }
     }
+}
 }
