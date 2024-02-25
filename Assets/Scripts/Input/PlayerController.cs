@@ -26,13 +26,13 @@ public class PlayerController : MonoBehaviour
     private float typeTwoTrapDamage = 15;
     private float typeThreeTrapDamage = 20;
 
-    private int coinCount = 0;
+    public int coinCount = 0;
 
-    private TextMeshProUGUI coinText;
+    public TextMeshProUGUI coinText;
 
 
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float jumpForce;
+    [SerializeField] public float moveSpeed;
+    [SerializeField] public float jumpForce;
 
 
     // Start is called before the first frame update
