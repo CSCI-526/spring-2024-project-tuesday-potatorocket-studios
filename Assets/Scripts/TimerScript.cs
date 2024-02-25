@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class TimerScript : MonoBehaviour
 {
 
-    public Slider slider;
+    private Slider slider;
     public float sliderTimer;
     private bool timerIsRunning = false;
     // Start is called before the first frame update
     void Start()
     {
+        slider = GameObject.Find("SliderTimer").GetComponent<Slider>();
         slider.maxValue = sliderTimer;
         slider.value = sliderTimer;
 
