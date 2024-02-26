@@ -11,7 +11,6 @@ public class Spike : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gameObject.tag = "spike";
-
     }
 
     // Update is called once per frame

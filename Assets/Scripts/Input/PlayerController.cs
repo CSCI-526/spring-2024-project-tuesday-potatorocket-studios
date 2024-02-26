@@ -118,15 +118,10 @@ public class PlayerController : MonoBehaviour
                 currentHealth -= typeTwoTrapDamage;
                 invincible = true;
             }
-            else if (theCollision.collider.tag == typeThreeTrapTag)
-            {
-                currentHealth -= typeThreeTrapDamage;
-                invincible = true;
-            }
 
             if (currentHealth <= 0)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
 
             if (invincible)
@@ -144,7 +139,25 @@ public class PlayerController : MonoBehaviour
 
             }
             coinCount++;
+        }
+    }
 
+    public void TakeDamage(float damage)
+    {
+        if (!invincible)
+        {
+            currentHealth -= typeThreeTrapDamage;
+            invincible = true;
+            
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+
+            if (invincible)
+            {
+                StartCoroutine(MakeVulnerable());
+            }
         }
     }
 
