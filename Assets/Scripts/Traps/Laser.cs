@@ -21,6 +21,8 @@ public class Laser : MonoBehaviour
         {
             target = player.transform; // Assign the player's transform to target
         }
+
+
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class Laser : MonoBehaviour
         // Perform the raycast and set the line renderer positions
         raycastDirection = transform.right;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, raycastDirection);
+        hit.collider.tag = "laser";
         Line.SetPosition(0, transform.position);
 
         // Determine the end point of the laser line
@@ -49,9 +52,9 @@ public class Laser : MonoBehaviour
         Line.SetPosition(1, lineEndPoint);
 
         // Check for collisions with the player
-        if (hit.collider != null && hit.collider.gameObject.tag == "Player")
+        /**if (hit.collider != null && hit.collider.gameObject.tag == "Player")
         {
             Destroy(player.gameObject); // Destroy the player GameObject
-        }
+        }*/
     }
 }

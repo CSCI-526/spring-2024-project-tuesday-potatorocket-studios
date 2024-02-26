@@ -37,7 +37,7 @@ public class WheelSpin : MonoBehaviour
     private void Update()
     {
         wheelTimer += Time.deltaTime;
-        if (Input.GetKeyDown(spinKey) && Player.GetComponent<PlayerController>().coinCount > 0 && wheelTimer - wheelInterval > 1 && spinning == 0)
+        if (Player != null && Input.GetKeyDown(spinKey) && Player.GetComponent<PlayerController>().coinCount > 0 && wheelTimer - wheelInterval > 1 && spinning == 0)
         { //Spin the wheel
             spinning = 1;
             randomPower = Random.Range(-200f, 200f); //Add random power so that you don't land on the same section every spin

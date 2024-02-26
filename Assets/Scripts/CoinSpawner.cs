@@ -40,7 +40,7 @@ public class CoinSpawner : MonoBehaviour
     //fade the coin out and destroy it after 5 seconds
     IEnumerator FadeCoin(GameObject coin)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
 
         if (coin != null)
         {

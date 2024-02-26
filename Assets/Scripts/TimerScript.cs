@@ -37,10 +37,14 @@ public class TimerScript : MonoBehaviour
             if (sliderTimer <= 0)
             {
                 timerIsRunning = false;
+
+                Destroy(GameObject.FindWithTag("Player"));
+
             }
 
             slider.value = sliderTimer;
         }
+
     }
 
 

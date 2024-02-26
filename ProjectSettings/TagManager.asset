@@ -7,6 +7,9 @@ TagManager:
   - Wind
   - EnemyBullet
   - Coin
+  - HealthBar
+  - spike
+  - laser
   layers:
   - Default
   - TransparentFX

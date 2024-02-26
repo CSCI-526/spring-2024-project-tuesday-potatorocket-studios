@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,9 +20,9 @@ public class PlayerController : MonoBehaviour
     private float maxHealth = 100;
     private float currentHealth;
     private float healthLerpSpeed = 3;
-    private string typeOneTrapTag = "typeOneTrap";
-    private string typeTwoTrapTag = "typeTwoTrap";
-    private string typeThreeTrapTag = "typeThreeTrap";
+    private string typeOneTrapTag = "spike";
+    private string typeTwoTrapTag = "EnemyBullet";
+    private string typeThreeTrapTag = "laser";
     private float typeOneTrapDamage = 10;
     private float typeTwoTrapDamage = 15;
     private float typeThreeTrapDamage = 20;
@@ -125,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
             if (currentHealth <= 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                Destroy(this.gameObject);
             }
 
             if (invincible)
@@ -143,7 +144,7 @@ public class PlayerController : MonoBehaviour
 
             }
             coinCount++;
-            //coinText.text = "Coins: " + coinCount;
+
         }
     }
 
