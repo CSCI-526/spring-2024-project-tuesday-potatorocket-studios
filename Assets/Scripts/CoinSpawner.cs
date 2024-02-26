@@ -24,6 +24,7 @@ public class CoinSpawner : MonoBehaviour
             //spawn coins at random positions in lower part of screen (can change position later depending on level design)
             Vector3 coinPos = new Vector3(Random.Range(-8, 8), Random.Range(-3, 1), 0);
             var coin = Instantiate(coinPrefab, coinPos, Quaternion.identity);
+            coin.gameObject.layer = 2;
 
             StartCoroutine(FadeCoin(coin));
 

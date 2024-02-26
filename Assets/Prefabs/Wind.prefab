@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 8913618844929771677}
   - component: {fileID: 4863059192939378564}
   - component: {fileID: 7153375829573257535}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HitBox
   m_TagString: Wind
   m_Icon: {fileID: 0}
