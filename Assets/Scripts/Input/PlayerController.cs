@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private float typeTwoTrapDamage = 15;
     private float typeThreeTrapDamage = 20;
 
-    public int coinCount = 0;
+    public int coinCount;
 
     public TextMeshProUGUI coinText;
 
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         healthBar = GameObject.FindWithTag("HealthBar").GetComponent<Image>();
         invincible = false;
         currentHealth = maxHealth;
-
+        coinCount = 0;
         coinText = GameObject.Find("CoinUI").GetComponent<TextMeshProUGUI>();
 
     }
@@ -59,6 +59,9 @@ public class PlayerController : MonoBehaviour
             transform.Translate(movement);
 
         }
+
+        coinText.text = "Coins: " + coinCount;
+
     }
 
     void FixedUpdate()
@@ -68,6 +71,8 @@ public class PlayerController : MonoBehaviour
             healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, currentHealth / maxHealth, healthLerpSpeed * Time.deltaTime);
             healthBar.color = Color.Lerp(Color.red, Color.green, currentHealth / maxHealth);
         }
+
+
     }
 
     //jump with spacebar or W
@@ -138,7 +143,7 @@ public class PlayerController : MonoBehaviour
 
             }
             coinCount++;
-            coinText.text = "Coins: " + coinCount;
+            //coinText.text = "Coins: " + coinCount;
         }
     }
 
