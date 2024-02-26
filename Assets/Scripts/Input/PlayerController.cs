@@ -67,13 +67,18 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (healthBar != null)
+        if (currentHealth <= 0)
         {
-            healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, currentHealth / maxHealth, healthLerpSpeed * Time.deltaTime);
-            healthBar.color = Color.Lerp(Color.red, Color.green, currentHealth / maxHealth);
+            currentHealth = 0;
+            healthBar.fillAmount = 0.01f;
+            Destroy(gameObject);
         }
 
-
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, Math.Max(currentHealth, 0) / maxHealth, healthLerpSpeed * Time.deltaTime);
+            healthBar.color = Color.Lerp(Color.red, Color.green, Math.Max(currentHealth, 0) / maxHealth);
+        }
     }
 
     //jump with spacebar or W
@@ -119,11 +124,6 @@ public class PlayerController : MonoBehaviour
                 invincible = true;
             }
 
-            if (currentHealth <= 0)
-            {
-                Destroy(gameObject);
-            }
-
             if (invincible)
             {
                 StartCoroutine(MakeVulnerable());
@@ -148,11 +148,6 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth -= typeThreeTrapDamage;
             invincible = true;
-            
-            if (currentHealth <= 0)
-            {
-                Destroy(gameObject);
-            }
 
             if (invincible)
             {

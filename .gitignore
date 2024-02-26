@@ -76,3 +76,6 @@ crashlytics-build.properties
 
 # Idea meta files
 .idea/*
+
+# Build files
+papcb/*
