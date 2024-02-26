@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 3549364564641764709}
   - component: {fileID: 4145206575769758862}
   - component: {fileID: 2567945283075816013}
-  - component: {fileID: 9196057018229995179}
   - component: {fileID: 4044341109393129829}
+  - component: {fileID: 1691501756827684032}
+  - component: {fileID: 8428476465474188538}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +161,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &9196057018229995179
+--- !u!114 &4044341109393129829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274690968891980331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edae50193fe0048229d2d49d82ba7f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinCount: 0
+  coinText: {fileID: 0}
+  moveSpeed: 5
+  jumpForce: 8
+--- !u!114 &1691501756827684032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,7 +207,7 @@ MonoBehaviour:
   m_DefaultActionMap: BasicGameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4044341109393129829
+--- !u!114 &8428476465474188538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,8 +216,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 274690968891980331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edae50193fe0048229d2d49d82ba7f96, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cc35dcd721d6a943b41e3afabe1a8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 8
