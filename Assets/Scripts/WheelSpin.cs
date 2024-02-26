@@ -146,7 +146,7 @@ public class WheelSpin : MonoBehaviour
             BulletSpawner spin = FindObjectOfType<BulletSpawner>();
             if (spin != null)
             {
-                //TO DO
+                spin.cooldown = 0;
 
                 wheelText.text = "Bullets deactivated!";
             }
