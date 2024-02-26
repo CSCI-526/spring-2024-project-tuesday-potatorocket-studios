@@ -51,7 +51,7 @@ public class Laser : MonoBehaviour
         // Check for collisions with the player
         if (hit.collider != null && hit.collider.gameObject.tag == "Player")
         {
-            Destroy(player.gameObject); // Destroy the player GameObject
+            hit.collider.gameObject.GetComponent<PlayerController>().TakeDamage(20);
         }
     }
 }

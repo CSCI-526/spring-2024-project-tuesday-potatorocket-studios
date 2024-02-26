@@ -19,7 +19,6 @@ public class TimerScript : MonoBehaviour
         StartTimer();
     }
 
-
     public void StartTimer()
     {
         timerIsRunning = true;
@@ -34,13 +33,14 @@ public class TimerScript : MonoBehaviour
         {
             sliderTimer -= Time.deltaTime;
             yield return new WaitForSeconds(.001f);
-            if (sliderTimer <= 0)
+            if (sliderTimer <= 0 || GameObject.FindGameObjectWithTag("Player") == null)
             {
                 timerIsRunning = false;
+                Destroy(GameObject.FindWithTag("Player"));
             }
-
             slider.value = sliderTimer;
         }
+
     }
 
 

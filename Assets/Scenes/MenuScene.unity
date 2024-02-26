@@ -280,6 +280,28 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1156117295849540236, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
+      propertyPath: m_text
+      value: "Goal: \nSurvive until the timer runs out. You can collect coins to
+        spin the wheel.\n\n\nControls:\nA,D to move left and right\nSpacebar to jump\nK
+        to spin the wheel\n\nGood luck! :)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650439723169226122, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 481.367
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650439723169226122, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 68.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650439723169226122, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -137
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650439723169226122, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 238.759
+      objectReference: {fileID: 0}
     - target: {fileID: 4267789572008282169, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
       propertyPath: m_Name
       value: MenuCanvas
@@ -363,6 +385,26 @@ PrefabInstance:
     - target: {fileID: 4885463037097788697, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533205128825705441, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
+      propertyPath: m_text
+      value: ROGUE ROULETTE
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533205128825705441, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
+      propertyPath: m_margin.z
+      value: -295.19208
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988579739102189885, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988579739102189885, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988579739102189885, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

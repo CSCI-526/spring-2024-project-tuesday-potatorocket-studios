@@ -1328,3 +1328,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinKey: 107
   Player: {fileID: 0}
+  bulletSpawner: {fileID: 9181265069078612727, guid: bad578fc620a0a14b83095bd26f62d8f, type: 3}
+  wheelText: {fileID: 0}

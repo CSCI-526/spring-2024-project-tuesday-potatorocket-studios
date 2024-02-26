@@ -10,21 +10,14 @@ public class Spike : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        
+        gameObject.tag = "spike";
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Destroy(other.gameObject);
-        }
 
     }
+
+
 }

@@ -19,6 +19,7 @@ public class WheelSpin : MonoBehaviour
 
     public KeyCode spinKey = KeyCode.K; // Key that spins the wheel
     public GameObject Player;
+    public GameObject bulletSpawner;
 
     public TextMeshProUGUI wheelText;
 
@@ -37,7 +38,7 @@ public class WheelSpin : MonoBehaviour
     private void Update()
     {
         wheelTimer += Time.deltaTime;
-        if (Input.GetKeyDown(spinKey) && Player.GetComponent<PlayerController>().coinCount > 0 && wheelTimer - wheelInterval > 1 && spinning == 0)
+        if (Player != null && Input.GetKeyDown(spinKey) && Player.GetComponent<PlayerController>().coinCount > 0 && wheelTimer - wheelInterval > 1 && spinning == 0)
         { //Spin the wheel
             spinning = 1;
             randomPower = Random.Range(-200f, 200f); //Add random power so that you don't land on the same section every spin
@@ -80,6 +81,7 @@ public class WheelSpin : MonoBehaviour
         float mySector = transform.eulerAngles.z;
         if (mySector > 0 && mySector <= 45)
         {
+
             //playerController.moveSpeed = 50f;
             print("Green5");
 
@@ -88,11 +90,13 @@ public class WheelSpin : MonoBehaviour
             {
                 wheelText.text = "Yay! Removed wind";
                 wind.SetActive(false);
+                StartCoroutine(activateWind(5, wind));
             }
 
         }
         else if (mySector > 45 && mySector <= 90)
         {
+
             //playerController.moveSpeed = 50f;
             print("Green6");
 
@@ -101,6 +105,7 @@ public class WheelSpin : MonoBehaviour
             {
                 wheelText.text = "Yessss! Removed wind";
                 wind.SetActive(false);
+                StartCoroutine(activateWind(5, wind));
             }
         }
         else if (mySector > 90 && mySector <= 135)
@@ -110,7 +115,7 @@ public class WheelSpin : MonoBehaviour
             if (Player != null)
             {
                 Player.GetComponent<PlayerController>().moveSpeed *= 0.9f;
-
+                Instantiate(bulletSpawner, new Vector3(10, -1, 0), Quaternion.identity);
                 wheelText.text = "Boo, slowed down.";
             }
 
@@ -129,9 +134,7 @@ public class WheelSpin : MonoBehaviour
         }
         else if (mySector > 180 && mySector <= 225)
         {
-
             print("Green2");
-
             if (Player != null)
             {
                 Player.GetComponent<PlayerController>().coinCount += 10;
@@ -140,29 +143,27 @@ public class WheelSpin : MonoBehaviour
         }
         else if (mySector > 225 && mySector <= 270)
         {
-
             print("Green3");
 
             BulletSpawner spin = FindObjectOfType<BulletSpawner>();
             if (spin != null)
             {
                 spin.cooldown = 0;
-
+                
+                StartCoroutine(disableCooldown(5, spin));
                 wheelText.text = "Bullets deactivated!";
             }
         }
         else if (mySector > 270 && mySector <= 315)
         {
-
             print("Red2");
             Player.GetComponent<PlayerController>().moveSpeed *= 0.9f;
+            Instantiate(bulletSpawner, new Vector3(10, -1, 0), Quaternion.identity);
 
         }
         else if (mySector > 315 && mySector <= 360)
         {
-
             print("Green4");
-
 
             if (Player != null)
             {
@@ -170,6 +171,24 @@ public class WheelSpin : MonoBehaviour
                 wheelText.text = "Got 10 coins!";
             }
         }
+        StartCoroutine(ChangeText());
     }
 
+    IEnumerator ChangeText()
+    {
+        yield return new WaitForSeconds(3);
+        wheelText.text = "Press K to Spin";
+    }
+
+    IEnumerator disableCooldown(int time, BulletSpawner spin)
+    {
+        yield return new WaitForSeconds(time);
+        spin.cooldown = 1;
+    }
+
+    IEnumerator activateWind(int time, GameObject wind)
+    {
+        yield return new WaitForSeconds(time);
+        wind.SetActive(true);
+    }
 }
