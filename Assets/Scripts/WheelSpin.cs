@@ -17,7 +17,7 @@ public class WheelSpin : MonoBehaviour
     private float smallDelay;
     private float randomPower;
 
-    public KeyCode spinKey = KeyCode.K; // Key that spins the wheel
+    private KeyCode spinKey = KeyCode.F; // Key that spins the wheel
     public GameObject Player;
     public GameObject bulletSpawner;
 
@@ -38,6 +38,16 @@ public class WheelSpin : MonoBehaviour
     private void Update()
     {
         wheelTimer += Time.deltaTime;
+
+        //If player has no coins, they can't spin the wheel
+        if (Player != null && Input.GetKeyDown(spinKey) && Player.GetComponent<PlayerController>().coinCount == 0)
+        {
+            wheelText.text = "Not enough coins to spin!";
+            StartCoroutine(ChangeText());
+        }
+
+
+
         if (Player != null && Input.GetKeyDown(spinKey) && Player.GetComponent<PlayerController>().coinCount > 0 && wheelTimer - wheelInterval > 1 && spinning == 0)
         { //Spin the wheel
             spinning = 1;
@@ -149,7 +159,7 @@ public class WheelSpin : MonoBehaviour
             if (spin != null)
             {
                 spin.cooldown = 0;
-                
+
                 StartCoroutine(disableCooldown(5, spin));
                 wheelText.text = "Bullets deactivated!";
             }
@@ -177,7 +187,7 @@ public class WheelSpin : MonoBehaviour
     IEnumerator ChangeText()
     {
         yield return new WaitForSeconds(3);
-        wheelText.text = "Press K to Spin";
+        wheelText.text = "Press F to Spin";
     }
 
     IEnumerator disableCooldown(int time, BulletSpawner spin)

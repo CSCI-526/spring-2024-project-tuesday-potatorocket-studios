@@ -27,17 +27,6 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "aa9b86d4-d4ca-46bb-aa67-2f34ba60f8ec",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "2c4cb5f9-4dda-41f1-8c47-a17984f7fffa",
                     "path": "<Keyboard>/w",
                     "interactions": "",

@@ -283,7 +283,7 @@ PrefabInstance:
     - target: {fileID: 1156117295849540236, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
       propertyPath: m_text
       value: "Goal: \nSurvive until the timer runs out. You can collect coins to
-        spin the wheel.\n\n\nControls:\nA,D to move left and right\nSpacebar to jump\nK
+        spin the wheel.\n\n\nControls:\nA,D to move left and right\nSpacebar to jump\nF
         to spin the wheel\n\nGood luck! :)"
       objectReference: {fileID: 0}
     - target: {fileID: 1650439723169226122, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
