@@ -26,7 +26,7 @@ public class CoinSpawner : MonoBehaviour
             var coin = Instantiate(coinPrefab, coinPos, Quaternion.identity);
             coin.gameObject.layer = 2;
 
-            StartCoroutine(FadeCoin(coin));
+            //StartCoroutine(FadeCoin(coin));
 
         }
     }
