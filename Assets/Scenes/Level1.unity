@@ -247,17 +247,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3275019380664649293, guid: b4633c4c192f747ff9de4fb3828d5709, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 251162290}
   m_SourcePrefab: {fileID: 100100000, guid: b4633c4c192f747ff9de4fb3828d5709, type: 3}
 --- !u!114 &240361375 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7634278420484081254, guid: b4633c4c192f747ff9de4fb3828d5709, type: 3}
   m_PrefabInstance: {fileID: 240361372}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 251162286}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7a16d63779b1e84c8ba31624ffabdc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &251162286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3275019380664649293, guid: b4633c4c192f747ff9de4fb3828d5709, type: 3}
+  m_PrefabInstance: {fileID: 240361372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &251162290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251162286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17100585cbe980b47ba49555fdcbf832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &314873162
@@ -1386,6 +1406,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3793469381332527547, guid: 3963f720a04cb744bae40e35a81d1924, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 251162286}
+    - target: {fileID: 3793469381332527547, guid: 3963f720a04cb744bae40e35a81d1924, type: 3}
       propertyPath: rotationSpeed
       value: 0.6
       objectReference: {fileID: 0}
@@ -1523,6 +1547,10 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 4044341109393129829, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 251162286}
     - target: {fileID: 5290221654136136761, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.528

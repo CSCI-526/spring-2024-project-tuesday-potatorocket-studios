@@ -103,6 +103,7 @@ MonoBehaviour:
   raycastDirection: {x: 0, y: 0}
   Line: {fileID: 1222781439779089406}
   activationTimer: 0
+  gameManager: {fileID: 0}
 --- !u!120 &1222781439779089406
 LineRenderer:
   serializedVersion: 2

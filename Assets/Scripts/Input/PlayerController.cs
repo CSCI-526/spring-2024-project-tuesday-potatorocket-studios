@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private float typeOneTrapDamage = 10;
     private float typeTwoTrapDamage = 15;
     private float typeThreeTrapDamage = 20;
+    private GameObject gameManager;
+    
 
     public int coinCount;
 
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         coinCount = 0;
         coinText = GameObject.Find("CoinUI").GetComponent<TextMeshProUGUI>();
-
+        gameManager = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
@@ -115,11 +117,13 @@ public class PlayerController : MonoBehaviour
         {
             if (theCollision.collider.tag == typeOneTrapTag)
             {
+                gameManager.GetComponent<Analytics>().updateTrapData("spike");
                 currentHealth -= typeOneTrapDamage;
                 invincible = true;
             }
             else if (theCollision.collider.tag == typeTwoTrapTag)
             {
+                gameManager.GetComponent<Analytics>().updateTrapData("enemybullet");
                 currentHealth -= typeTwoTrapDamage;
                 invincible = true;
             }
@@ -146,6 +150,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!invincible)
         {
+            gameManager.GetComponent<Analytics>().updateTrapData("laser");
             currentHealth -= typeThreeTrapDamage;
             invincible = true;
 
