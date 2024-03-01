@@ -10,6 +10,7 @@ TagManager:
   - HealthBar
   - spike
   - laser
+  - Enemy
   layers:
   - Default
   - TransparentFX
