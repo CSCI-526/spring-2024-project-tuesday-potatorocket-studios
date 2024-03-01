@@ -12,6 +12,7 @@ TagManager:
   - laser
   - Shield
   - LevelProgress
+  - Enemy
   layers:
   - Default
   - TransparentFX
