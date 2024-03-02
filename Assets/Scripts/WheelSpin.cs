@@ -23,6 +23,7 @@ public class WheelSpin : MonoBehaviour
 
     public TextMeshProUGUI wheelText;
 
+    public GameObject Shield;
     private void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -126,7 +127,7 @@ public class WheelSpin : MonoBehaviour
             {
                 Player.GetComponent<PlayerController>().moveSpeed *= 0.9f;
                 Instantiate(bulletSpawner, new Vector3(10, -1, 0), Quaternion.identity);
-                wheelText.text = "Boo, slowed down.";
+                wheelText.text = "Boo, bullet trap added.";
             }
 
         }
@@ -137,9 +138,8 @@ public class WheelSpin : MonoBehaviour
 
             if (Player != null)
             {
-                Player.GetComponent<PlayerController>().jumpForce *= 1.1f;
-                wheelText.text = "Increased jump!";
-
+                activateShield();
+                wheelText.text = "Got a shield!";
             }
         }
         else if (mySector > 180 && mySector <= 225)
@@ -200,5 +200,10 @@ public class WheelSpin : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         wind.SetActive(true);
+    }
+
+    public void activateShield() {
+        Shield.SetActive(true);
+        Player.GetComponent<PlayerController>().isShielded = true;
     }
 }
