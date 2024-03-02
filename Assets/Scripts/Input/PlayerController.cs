@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private float healthLerpSpeed = 3;
     private string typeOneTrapTag = "spike";
     private string typeTwoTrapTag = "EnemyBullet";
-    private string typeThreeTrapTag = "laser";
+    //private string typeThreeTrapTag = "laser";
     private float typeOneTrapDamage = 10;
     private float typeTwoTrapDamage = 15;
     private float typeThreeTrapDamage = 20;

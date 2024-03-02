@@ -28,7 +28,7 @@ public class Shield : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D theCollision)
+    /*void OnCollisionEnter2D(Collision2D theCollision)
     {
         if (theCollision.gameObject.tag == "Coin")
         {
@@ -40,5 +40,5 @@ public class Shield : MonoBehaviour
             }
             playerScript.coinCount++;
         }
-    }
+    }*/
 }
