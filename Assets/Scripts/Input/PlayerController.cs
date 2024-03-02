@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     
 
     public int coinCount;
+    public bool isShielded;
 
     public TextMeshProUGUI coinText;
 
@@ -113,7 +114,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
 
-        if (!invincible)
+        if (!invincible && (isShielded == false))
         {
             if (theCollision.collider.tag == typeOneTrapTag)
             {
