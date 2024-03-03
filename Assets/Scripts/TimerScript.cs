@@ -9,6 +9,7 @@ public class TimerScript : MonoBehaviour
 
     private Slider slider;
     public float sliderTimer;
+    private int lastLevel = 2;
     private bool timerIsRunning = false;
     private Camera mainCamera;
     private GameObject levelProgress;
@@ -53,14 +54,18 @@ public class TimerScript : MonoBehaviour
 
             if (sliderTimer <= 0)
             {
-                timerIsRunning = false;
-                levelProgress.SetActive(true);
-                analyticsScript.PublishData();
-                float leftTimerValue = 0;
-                PlayerController playerScript = player.GetComponent<PlayerController>();
-                int coinCount = playerScript.coinCount;
                 Traps trapsData = analyticsScript.TrapsData;
-                timerText.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
+                if (trapsData.level == lastLevel) {
+                    Destroy(player);
+                } else {
+                    timerIsRunning = false;
+                    levelProgress.SetActive(true);
+                    analyticsScript.PublishData();
+                    float leftTimerValue = 0;
+                    PlayerController playerScript = player.GetComponent<PlayerController>();
+                    int coinCount = playerScript.coinCount;
+                    timerText.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
+                }
             }
             slider.value = sliderTimer;
         }
