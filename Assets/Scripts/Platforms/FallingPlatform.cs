@@ -8,15 +8,28 @@ public class FallingPlatform : MonoBehaviour
     private float destroyDelay = 2.0f; //Delay for destroying the platform
     [SerializeField] private Rigidbody2D rb;
 
-    private void OnCollisionEnter2D(Collision2D collision){
-        if(collision.gameObject.CompareTag("Player")){
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
             StartCoroutine(Fall());
+
         }
     }
 
-    private IEnumerator Fall() {
+    private void Update()
+    {
+        if (transform.position.y < -6)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator Fall()
+    {
         yield return new WaitForSeconds(fallDelay);
         rb.bodyType = RigidbodyType2D.Dynamic;
-        Destroy(gameObject, destroyDelay);
+        rb.AddForce(new Vector2(0, -5), ForceMode2D.Impulse);
+
     }
 }
