@@ -14,6 +14,6 @@ public class RotateFan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.transform.Rotate(Vector3.right * Time.deltaTime * speed);
+        this.gameObject.transform.Rotate(Vector3.forward * Time.deltaTime * speed);
     }
 }
