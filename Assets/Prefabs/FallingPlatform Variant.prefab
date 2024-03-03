@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6131414968126987809, guid: 2282f07af4c1f4a7495d1732b6a7a029, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.37
+      value: -3.36
       objectReference: {fileID: 0}
     - target: {fileID: 6131414968126987809, guid: 2282f07af4c1f4a7495d1732b6a7a029, type: 3}
       propertyPath: m_LocalPosition.z
@@ -90,9 +90,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 943181146253527963, guid: 2282f07af4c1f4a7495d1732b6a7a029, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3156633190891831985}
-    - targetCorrespondingSourceObject: {fileID: 943181146253527963, guid: 2282f07af4c1f4a7495d1732b6a7a029, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6086923974404274710}
   m_SourcePrefab: {fileID: 100100000, guid: 2282f07af4c1f4a7495d1732b6a7a029, type: 3}
 --- !u!50 &443180620542954486 stripped
@@ -105,25 +102,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 943181146253527963, guid: 2282f07af4c1f4a7495d1732b6a7a029, type: 3}
   m_PrefabInstance: {fileID: 780268766247918830}
   m_PrefabAsset: {fileID: 0}
---- !u!251 &3156633190891831985
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559229267490346869}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!114 &6086923974404274710
 MonoBehaviour:
   m_ObjectHideFlags: 0
