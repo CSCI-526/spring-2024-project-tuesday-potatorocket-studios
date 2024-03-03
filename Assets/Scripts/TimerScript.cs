@@ -7,13 +7,15 @@ using UnityEngine.UI;
 public class TimerScript : MonoBehaviour
 {
 
-    public Slider slider;
+    private Slider slider;
     public float sliderTimer;
-    public bool timerIsRunning = false;
+    private bool timerIsRunning = false;
     private Camera mainCamera;
     private GameObject levelProgress;
     public TextMeshProUGUI timerText;
     private GameObject player;
+    private GameObject gameController;
+    private Analytics analyticsScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,8 @@ public class TimerScript : MonoBehaviour
         mainCamera = Camera.main;
         StartTimer();
         player = GameObject.FindWithTag("Player");
+        gameController = GameObject.FindWithTag("GameController");
+        analyticsScript = gameController.GetComponent<Analytics>();
     }
 
     public void StartTimer()
@@ -41,26 +45,21 @@ public class TimerScript : MonoBehaviour
         {
             sliderTimer -= Time.deltaTime;
             yield return new WaitForSeconds(.001f);
+
             if (player == null)
             {
                 timerIsRunning = false;
             }
+
             if (sliderTimer <= 0)
             {
                 timerIsRunning = false;
-                // Destroy(GameObject.FindWithTag("Player"));
-                GameObject gameController = GameObject.FindWithTag("GameController");
                 levelProgress.SetActive(true);
-                gameController.GetComponent<Analytics>().PublishData();
+                analyticsScript.PublishData();
                 float leftTimerValue = 0;
                 PlayerController playerScript = player.GetComponent<PlayerController>();
                 int coinCount = playerScript.coinCount;
-                playerScript.currentHealth = playerScript.maxHealth;
-                // Access trapsData from analyticsScript
-                // StartCoroutine(respawnCoins(gameController));
-                Traps trapsData = gameController.GetComponent<Analytics>().TrapsData;
-                // gameController.GetComponent<CoinSpawner>().spawnCoins(Random.Range(4, 9));
-                //timerText.text = "Time Left:" + leftTimerValue.ToString() + "s\nCoin Count:" + coinCount.ToString();
+                Traps trapsData = analyticsScript.TrapsData;
                 timerText.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
             }
             slider.value = sliderTimer;
@@ -68,11 +67,20 @@ public class TimerScript : MonoBehaviour
 
     }
 
-    // IEnumerator respawnCoins(GameObject gameController) {
-    //     yield return new WaitForSeconds(10);
-    //     Debug.Log(Camera.main.transform.position);
-    //     gameController.GetComponent<CoinSpawner>().spawnCoins(Random.Range(4, 9));
-    // }
-
-
+    public void ProceedToNextLevel()
+    {
+        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + 58, 0, -10);
+        GameObject.FindWithTag("LevelProgress").SetActive(false);
+        player.transform.position = new Vector3(Camera.main.transform.position.x, -5, 0);
+        player.GetComponent<PlayerController>().currentHealth = 100;
+        gameController.GetComponent<CoinSpawner>().spawnCoins(Random.Range(4, 9));
+        int level = analyticsScript.trapsData.level;
+        analyticsScript.trapsData = new Traps{level = level + 1};
+        analyticsScript.flag = true;
+        sliderTimer = 30;
+        slider.value = sliderTimer;
+        slider.maxValue = sliderTimer;
+        timerIsRunning = true;
+        StartTimer();
+    }
 }

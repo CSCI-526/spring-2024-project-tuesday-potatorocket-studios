@@ -24,19 +24,13 @@ public class Analytics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        trapsData = new Traps();
-        trapsData.level = 1;
+        trapsData = new Traps{ level = 1 };
         flag = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (flag && GameObject.FindGameObjectWithTag("Player") == null)
-        // {
-        //     RestClient.Post("https://rogueroulette-efcf5-default-rtdb.firebaseio.com/Traps/.json", JsonUtility.ToJson(trapsData));
-        //     flag = false;
-        // }
     }
 
     public void PublishData() {

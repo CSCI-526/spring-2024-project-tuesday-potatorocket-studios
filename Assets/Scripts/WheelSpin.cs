@@ -126,7 +126,7 @@ public class WheelSpin : MonoBehaviour
             if (Player != null)
             {
                 Player.GetComponent<PlayerController>().moveSpeed *= 0.9f;
-                Instantiate(bulletSpawner, new Vector3(10, -1, 0), Quaternion.identity);
+                Instantiate(bulletSpawner, new Vector3(Camera.main.transform.position.x + 10,Camera.main.transform.position.y - 1, 0), Quaternion.identity);
                 wheelText.text = "Boo, bullet trap added.";
             }
 
