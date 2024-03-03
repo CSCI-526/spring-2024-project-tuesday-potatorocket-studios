@@ -9,15 +9,16 @@ using TMPro;
 public class GameOver : MonoBehaviour
 {
     public GameObject gameOverPanel;
-    private TimerScript gameManagerScript; 
+    private TimerScript gameManagerScript;
     public TextMeshProUGUI timerText;
     private PlayerController playerScript;
-    private Analytics analyticsScript; 
+    private Analytics analyticsScript;
+
     void Start()
     {
-        
+
         GameObject gameManagerObj = GameObject.Find("GameManager");
-        gameManagerScript = gameManagerObj.GetComponent<TimerScript>(); 
+        gameManagerScript = gameManagerObj.GetComponent<TimerScript>();
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         playerScript = playerObj.GetComponent<PlayerController>();
@@ -27,12 +28,12 @@ public class GameOver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (GameObject.FindGameObjectWithTag("Player") == null)
         {
             gameOverPanel.SetActive(true);
-            
-            float leftTimerValue = Mathf.Floor(gameManagerScript.sliderTimer);
+
+            float leftTimerValue = Mathf.Ceil(gameManagerScript.sliderTimer);
             int coinCount = playerScript.coinCount;
             // Access trapsData from analyticsScript
             Traps trapsData = analyticsScript.TrapsData;
