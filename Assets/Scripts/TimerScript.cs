@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimerScript : MonoBehaviour
@@ -30,6 +31,7 @@ public class TimerScript : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         gameController = GameObject.FindWithTag("GameController");
         analyticsScript = gameController.GetComponent<Analytics>();
+        analyticsScript.trapsData.level = GlobalValues.level;
     }
 
     public void StartTimer()
@@ -74,7 +76,7 @@ public class TimerScript : MonoBehaviour
 
     public void ProceedToNextLevel()
     {
-        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + 58, 0, -10);
+        /*Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + 58, 0, -10);
         GameObject.FindWithTag("LevelProgress").SetActive(false);
         player.transform.position = new Vector3(Camera.main.transform.position.x, -5, 0);
         player.GetComponent<PlayerController>().currentHealth = 100;
@@ -86,6 +88,12 @@ public class TimerScript : MonoBehaviour
         slider.value = sliderTimer;
         slider.maxValue = sliderTimer;
         timerIsRunning = true;
-        StartTimer();
+        StartTimer();*/
+        
+        PlayerController playerScript = player.GetComponent<PlayerController>();
+        GlobalValues.coin = playerScript.coinCount;
+        GlobalValues.level++;
+        SceneManager.LoadScene("Level2-Alpha");
+
     }
 }
