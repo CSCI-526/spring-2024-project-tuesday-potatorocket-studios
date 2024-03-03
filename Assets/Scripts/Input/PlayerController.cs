@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
         coinCount = 0;
         coinText = GameObject.Find("CoinUI").GetComponent<TextMeshProUGUI>();
         gameManager = GameObject.Find("GameManager");
+        coinCount = GlobalValues.coin;
     }
 
     // Update is called once per frame
