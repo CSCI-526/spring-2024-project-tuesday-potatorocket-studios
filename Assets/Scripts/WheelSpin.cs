@@ -20,6 +20,7 @@ public class WheelSpin : MonoBehaviour
     private KeyCode spinKey = KeyCode.F; // Key that spins the wheel
     public GameObject Player;
     public GameObject bulletSpawner;
+    public GameObject sword;
 
     public TextMeshProUGUI wheelText;
 
@@ -145,7 +146,11 @@ public class WheelSpin : MonoBehaviour
         else if (mySector > 180 && mySector <= 225)
         {
             print("Green2");
-            if (Player != null)
+            if (GameObject.FindWithTag("Sword") == null)
+            {
+                Instantiate(sword, Player.transform.position, Quaternion.identity);
+            }
+            else if (Player != null)
             {
                 Player.GetComponent<PlayerController>().coinCount += 10;
                 wheelText.text = "Got 10 coins!";
@@ -174,8 +179,12 @@ public class WheelSpin : MonoBehaviour
         else if (mySector > 315 && mySector <= 360)
         {
             print("Green4");
-
-            if (Player != null)
+            
+            if (GameObject.FindWithTag("Sword") == null)
+            {
+                Instantiate(sword, Player.transform.position, Quaternion.identity);
+            }
+            else if (Player != null)
             {
                 Player.GetComponent<PlayerController>().coinCount += 10;
                 wheelText.text = "Got 10 coins!";

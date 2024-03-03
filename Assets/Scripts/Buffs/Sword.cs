@@ -6,56 +6,58 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
 
-    private Vector3 offset;
+    public float speed = 75f;
 
-    private float speed = 75f;
-
-    public GameObject sword;
-
-    public Animator anim;
-
-    private float timer;
+    private GameObject[] enemies;
 
    // public Animation anim;
     // Start is called before the first frame update
     void Start()
     {
-        offset = new Vector3(-0.4f, 0, 0);
+        player = GameObject.FindWithTag("Player");
         //this.transform.eulerAngles = new Vector3(0, 0, -45);
-        this.transform.position = player.transform.position + offset;
-        
-        
-        
+        this.transform.position = player.transform.position;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        
-        /*this.transform.Rotate(Vector3.forward, speed * Time.deltaTime);
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-         if (this.transform.eulerAngles.z >= 45 & this.transform.eulerAngles.z <= 135)
-         {
-             resetSlash();
-         }*/
+    }
 
+    private void FixedUpdate()
+    {
+
+        var idx = 0;
+        var closest = 10000000000000000f;
+        var i = 0;
+        if (enemies != null)
+        {
+            foreach (var e in enemies)
+            {
+
+                var d = Vector3.Distance(this.transform.position, e.transform.position);
+                if (d < closest)
+                {
+                    closest = d;
+                    idx = i;
+                }
+
+                i++;
+            }
+            //this.transform.LookAt(enemies[idx].transform.position);
+
+            transform.right = transform.position - enemies[idx].transform.position;
+        }
     }
 
     private void LateUpdate()
     {
-        this.transform.position = player.transform.position + offset;
-    }
-
-
-    private void resetSlash()
-    {
-        offset *= -1;
-        this.transform.Rotate(0,180,0);
-        this.transform.eulerAngles = new Vector3(0, this.transform.eulerAngles.y, -45);
-        this.transform.position = player.transform.position + offset;
+        this.transform.position = player.transform.position;
     }
 
 }
