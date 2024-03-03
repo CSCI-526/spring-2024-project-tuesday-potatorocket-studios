@@ -32,6 +32,7 @@ public class GameOver : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Player") == null)
         {
             gameOverPanel.SetActive(true);
+            gameManagerScript.GetComponent<Analytics>().PublishData();
 
             float leftTimerValue = Mathf.Ceil(gameManagerScript.sliderTimer);
             int coinCount = playerScript.coinCount;

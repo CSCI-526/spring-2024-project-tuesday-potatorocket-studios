@@ -10,27 +10,37 @@ public class Traps
     public int spike;
     public int laser;
     public int bullet;
+    public int level;
 }
 
 public class Analytics : MonoBehaviour
 {
 
-    private Traps trapsData;
+    public Traps trapsData;
     
-    private bool flag;
+    public bool flag;
     // Public getter for trapsData
     public Traps TrapsData => trapsData;
     // Start is called before the first frame update
     void Start()
     {
         trapsData = new Traps();
+        trapsData.level = 1;
         flag = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (flag && GameObject.FindGameObjectWithTag("Player") == null)
+        // if (flag && GameObject.FindGameObjectWithTag("Player") == null)
+        // {
+        //     RestClient.Post("https://rogueroulette-efcf5-default-rtdb.firebaseio.com/Traps/.json", JsonUtility.ToJson(trapsData));
+        //     flag = false;
+        // }
+    }
+
+    public void PublishData() {
+        if (flag)
         {
             RestClient.Post("https://rogueroulette-efcf5-default-rtdb.firebaseio.com/Traps/.json", JsonUtility.ToJson(trapsData));
             flag = false;

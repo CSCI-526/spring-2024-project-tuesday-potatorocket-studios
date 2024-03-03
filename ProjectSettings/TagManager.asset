@@ -11,6 +11,7 @@ TagManager:
   - spike
   - laser
   - Shield
+  - LevelProgress
   layers:
   - Default
   - TransparentFX

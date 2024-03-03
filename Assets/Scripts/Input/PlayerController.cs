@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
     private bool invincible;
     private int invincibilityTime = 1;
     private Image healthBar;
-    private float maxHealth = 100;
-    private float currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
     private float healthLerpSpeed = 3;
     private string typeOneTrapTag = "spike";
     private string typeTwoTrapTag = "EnemyBullet";
