@@ -4,40 +4,34 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class GameOver : MonoBehaviour
 {
     public GameObject gameOverPanel;
-    private TimerScript gameManagerScript; // Assuming TimerScript is the correct component name
-    private Text timerText;
+    private TimerScript gameManagerScript; 
+    public TextMeshProUGUI timerText;
     private PlayerController playerScript;
-    private Analytics analyticsScript; // Reference to the Analytics script
+    private Analytics analyticsScript; 
     void Start()
     {
-        // Find the GameManager object and TimerScript component once at the start
+        
         GameObject gameManagerObj = GameObject.Find("GameManager");
-        gameManagerScript = gameManagerObj.GetComponent<TimerScript>(); // Correct syntax for GetComponent
+        gameManagerScript = gameManagerObj.GetComponent<TimerScript>(); 
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         playerScript = playerObj.GetComponent<PlayerController>();
         analyticsScript = gameManagerObj.GetComponent<Analytics>();
-        // Properly initialize timerText
-        GameObject textObj = GameObject.Find("Canvas/GameOverPanel/gameOver_Stats");
-        if (textObj != null)
-        {
-            timerText = textObj.GetComponent<Text>();
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (GameObject.FindGameObjectWithTag("Player") == null && gameManagerScript != null && timerText != null)
+        if (GameObject.FindGameObjectWithTag("Player") == null)
         {
             gameOverPanel.SetActive(true);
             
-            // Use the TimerScript component's sliderTimer directly
             float leftTimerValue = Mathf.Floor(gameManagerScript.sliderTimer);
             int coinCount = playerScript.coinCount;
             // Access trapsData from analyticsScript
