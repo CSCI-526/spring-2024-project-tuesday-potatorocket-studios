@@ -18,6 +18,8 @@ public class Analytics : MonoBehaviour
     private Traps trapsData;
     
     private bool flag;
+    // Public getter for trapsData
+    public Traps TrapsData => trapsData;
     // Start is called before the first frame update
     void Start()
     {
