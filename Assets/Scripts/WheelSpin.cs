@@ -90,8 +90,8 @@ public class WheelSpin : MonoBehaviour
     //public PlayerController playerController;
     private void GetColor()
     {
-        //float mySector = transform.eulerAngles.z;
-        float mySector = 48; //For testing purposes
+        float mySector = transform.eulerAngles.z;
+        //float mySector = 48; //For testing purposes
 
         if (mySector > 0 && mySector <= 45)
         {
