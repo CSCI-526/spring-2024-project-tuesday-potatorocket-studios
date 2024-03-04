@@ -129,6 +129,12 @@ public class PlayerController : MonoBehaviour
                 currentHealth -= typeTwoTrapDamage;
                 invincible = true;
             }
+            else if (theCollision.collider.tag == "Enemy")
+            {
+                Destroy(theCollision.gameObject);
+                currentHealth -= 20;
+                invincible = true;
+            }
 
             if (invincible)
             {

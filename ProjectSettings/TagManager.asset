@@ -12,6 +12,8 @@ TagManager:
   - laser
   - Shield
   - LevelProgress
+  - Enemy
+  - Sword
   layers:
   - Default
   - TransparentFX
