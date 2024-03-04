@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9035389827662607432}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sliderTimer: 30
+  timerText: {fileID: 0}
 --- !u!114 &7634278420484081254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 0}
+  timerText: {fileID: 0}
 --- !u!114 &5606257908924816692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,3 +88,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17100585cbe980b47ba49555fdcbf832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flag: 0
