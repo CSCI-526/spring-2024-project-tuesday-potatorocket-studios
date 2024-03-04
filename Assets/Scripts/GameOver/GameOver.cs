@@ -28,8 +28,8 @@ public class GameOver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (GameObject.FindGameObjectWithTag("Player") == null)
+        GameObject levelProgress = GameObject.FindWithTag("LevelProgress");
+        if (GameObject.FindGameObjectWithTag("Player") == null && levelProgress == null)
         {
             gameOverPanel.SetActive(true);
             gameManagerScript.GetComponent<Analytics>().PublishData();
@@ -41,12 +41,12 @@ public class GameOver : MonoBehaviour
 
             //timerText.text = "Time Left:" + leftTimerValue.ToString() + "s\nCoin Count:" + coinCount.ToString();
             timerText.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
-
         }
     }
 
     public void Restart()
     {
+        GlobalValues.coin = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

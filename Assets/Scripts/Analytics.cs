@@ -7,11 +7,21 @@ using UnityEngine;
 
 public class Traps
 {
+    public string guid;
     public int spike;
     public int laser;
     public int bullet;
     public int level;
     public int enemy;
+}
+
+public class WheelAnalytics {
+    public string guid;
+    public int timeRemaining;
+    public int coinCount;
+    public int level;
+    public int spinCount;
+    public int healthLeft;
 }
 
 public class Analytics : MonoBehaviour
@@ -22,16 +32,30 @@ public class Analytics : MonoBehaviour
     public bool flag;
     // Public getter for trapsData
     public Traps TrapsData => trapsData;
+    public WheelAnalytics wheelAnalytics;
     // Start is called before the first frame update
     void Start()
     {
-        trapsData = new Traps{ level = GlobalValues.level };
+        if (GlobalValues.guid == null)
+        {
+            GlobalValues.guid = System.Guid.NewGuid().ToString();
+        }
+        trapsData = new Traps{ level = GlobalValues.level, guid = GlobalValues.guid};
+        wheelAnalytics = new WheelAnalytics{ level = GlobalValues.level, guid = GlobalValues.guid };
         flag = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void PublishWheelAnalytics() {
+        wheelAnalytics.coinCount = GlobalValues.coin;
+        wheelAnalytics.spinCount += 1;
+        wheelAnalytics.timeRemaining = (int) GameObject.FindWithTag("GameController").GetComponent<TimerScript>().sliderTimer;
+        wheelAnalytics.healthLeft = (int) GameObject.FindWithTag("Player").GetComponent<PlayerController>().currentHealth;
+        RestClient.Post("https://rogueroulette-efcf5-default-rtdb.firebaseio.com/Wheel/.json", JsonUtility.ToJson(wheelAnalytics));
     }
 
     public void PublishData() {

@@ -152,6 +152,7 @@ public class PlayerController : MonoBehaviour
 
             }
             coinCount++;
+            GlobalValues.coin = coinCount;
         }
     }
 
@@ -173,7 +174,9 @@ public class PlayerController : MonoBehaviour
     private IEnumerator MakeVulnerable()
     {
         yield return new WaitForSeconds(invincibilityTime);
-        invincible = false;
+        if (GameObject.FindWithTag("LevelProgress") == null) {
+            invincible = false;
+        }
     }
 }
 

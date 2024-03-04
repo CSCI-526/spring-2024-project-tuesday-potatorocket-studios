@@ -17,14 +17,14 @@ public class CircleEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(this.gameObject, lifespan);
+        Destroy(gameObject, lifespan);
     }
     
     private void FixedUpdate() {
         if (player != null)
         {
-            this.transform.position =
-                Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+            transform.position =
+                Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
     }
     
@@ -32,7 +32,7 @@ public class CircleEnemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Sword"))
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
     
@@ -40,7 +40,15 @@ public class CircleEnemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Sword"))
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 197371447}
   - component: {fileID: 197371446}
   - component: {fileID: 197371445}
+  - component: {fileID: 197371448}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -215,6 +216,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &197371448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197371444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20cb7875912cd0a5c88ec82bb8e723dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1452785072
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +462,14 @@ PrefabInstance:
         coins to spin the wheel for a chance to gain buffs.\n\n\nControls:\nA,D to
         move left and right\nW to jump\nF to spin the wheel\n\nGood luck! Only the
         strongest survive. :)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383489214427073539, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 197371446}
+    - target: {fileID: 1383489214427073539, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1650439723169226122, guid: df0621cacbbac6f4dafe4bb10f2190c3, type: 3}
       propertyPath: m_AnchorMax.x

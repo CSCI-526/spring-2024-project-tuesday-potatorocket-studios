@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
+        GlobalValues.level = 1;
+        GlobalValues.coin = 0;
         SceneManager.LoadScene("Level1 - Alpha Separate Scene");
     }
 

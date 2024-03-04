@@ -34,8 +34,8 @@ public class WheelSpin : MonoBehaviour
         spinning = 0;
         RotatePower = 400;
         StopPower = 150;
-        Player = GameObject.Find("Player");
-        gameManager = GameObject.Find("GameManager");
+        Player = GameObject.FindWithTag("Player");
+        gameManager = GameObject.FindWithTag("GameController");
         wheelText = GameObject.Find("WheelOutcome").GetComponent<TextMeshProUGUI>();
         bossBullet = 0;
     }
@@ -59,6 +59,7 @@ public class WheelSpin : MonoBehaviour
             randomPower = Random.Range(-200f, 200f); //Add random power so that you don't land on the same section every spin
             rbody.AddTorque(RotatePower + randomPower);
             Player.GetComponent<PlayerController>().coinCount -= 1;
+            gameManager.GetComponent<Analytics>().PublishWheelAnalytics();
             //Player.GetComponent<PlayerController>().coinText.text = "Coins: " + Player.GetComponent<PlayerController>().coinCount;
         }
 
@@ -94,7 +95,7 @@ public class WheelSpin : MonoBehaviour
     private void GetColor()
     {
         float mySector = transform.eulerAngles.z;
-        //float mySector = 100; //For testing purposes
+        // float mySector = 150; //For testing purposes
 
         if (mySector > 0 && mySector <= 45)
         {

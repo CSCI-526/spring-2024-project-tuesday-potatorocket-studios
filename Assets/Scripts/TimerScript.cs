@@ -57,9 +57,9 @@ public class TimerScript : MonoBehaviour
             if (sliderTimer <= 0)
             {
                 Traps trapsData = analyticsScript.TrapsData;
-                if (trapsData.level == lastLevel) {
-                    Destroy(player);
-                } else {
+                // if (GlobalValues.level == lastLevel) {
+                //     Destroy(player);
+                // } else {
                     timerIsRunning = false;
                     player.GetComponent<PlayerController>().invincible = true;
                     levelProgress.SetActive(true);
@@ -68,7 +68,7 @@ public class TimerScript : MonoBehaviour
                     PlayerController playerScript = player.GetComponent<PlayerController>();
                     int coinCount = playerScript.coinCount;
                     timerText.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
-                }
+                // }
             }
             slider.value = sliderTimer;
         }

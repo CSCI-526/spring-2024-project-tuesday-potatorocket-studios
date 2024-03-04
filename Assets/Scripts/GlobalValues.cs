@@ -7,5 +7,5 @@ public static class GlobalValues
     public static int coin;
     public static int level = 1;
 
-
+    public static string guid = null;
 }
