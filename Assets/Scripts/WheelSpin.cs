@@ -89,8 +89,8 @@ public class WheelSpin : MonoBehaviour
     //public PlayerController playerController;
     private void GetColor()
     {
-        // float mySector = transform.eulerAngles.z;
-        float mySector = 227; //For testing purposes
+        //float mySector = transform.eulerAngles.z;
+        float mySector = 48; //For testing purposes
 
         if (mySector > 0 && mySector <= 45)
         {
@@ -113,7 +113,7 @@ public class WheelSpin : MonoBehaviour
             //playerController.moveSpeed = 50f;
             print("Green6");
 
-            GameObject wind = GameObject.Find("Wind(1)");
+            GameObject wind = GameObject.Find("Wind (1)");
             if (wind != null)
             {
                 wheelText.text = "Yessss! Removed wind";
@@ -213,6 +213,7 @@ public class WheelSpin : MonoBehaviour
     public void activateShield()
     {
         Shield.SetActive(true);
+        Shield.GetComponent<Shield>().timer = 0;
         Player.GetComponent<PlayerController>().isShielded = true;
     }
 }

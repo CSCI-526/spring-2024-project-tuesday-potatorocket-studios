@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private float typeTwoTrapDamage = 15;
     private float typeThreeTrapDamage = 20;
     private GameObject gameManager;
-    
+
 
     public int coinCount;
     public bool isShielded;
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            healthBar.fillAmount = 0.01f;
+            healthBar.fillAmount = 0.0f;
             Destroy(gameObject);
         }
 
