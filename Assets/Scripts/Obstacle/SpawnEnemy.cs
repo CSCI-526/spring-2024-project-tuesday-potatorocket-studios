@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour
 {
     private float timer;
+    public float spawnTimer;
 
     public GameObject enemy;
     // Start is called before the first frame update
@@ -17,9 +18,9 @@ public class SpawnEnemy : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 4)
+        if (timer >= spawnTimer)
         {
-            int loc = Random.Range(-1, 1);
+            int loc = Random.Range(-1, 2);
             //enemy from left
             if (loc == -1)
             {

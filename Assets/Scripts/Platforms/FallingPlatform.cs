@@ -6,6 +6,7 @@ public class FallingPlatform : MonoBehaviour
 {
     private float fallDelay = 1.0f; //Delay for fall
     private float destroyDelay = 2.0f; //Delay for destroying the platform
+    public GameObject BottomCollider;
     [SerializeField] private Rigidbody2D rb;
 
 
@@ -14,6 +15,7 @@ public class FallingPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Destroy(BottomCollider);
             StartCoroutine(Fall());
 
         }

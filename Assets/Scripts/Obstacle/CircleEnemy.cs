@@ -6,6 +6,7 @@ public class CircleEnemy : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     public GameObject player;
+    public float lifespan;
     
     // Start is called before the first frame update
     void Start()
@@ -16,12 +17,15 @@ public class CircleEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(this.gameObject, 5);
+        Destroy(this.gameObject, lifespan);
     }
     
     private void FixedUpdate() {
-        this.transform.position =
-            Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        if (player != null)
+        {
+            this.transform.position =
+                Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D other) 

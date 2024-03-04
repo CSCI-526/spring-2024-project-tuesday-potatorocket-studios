@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private PlayerControls playerControls;
     private Rigidbody2D rb;
     private bool isGrounded;
-    private bool invincible;
+    public bool invincible;
     private int invincibilityTime = 1;
     private Image healthBar;
     public float maxHealth = 100;
@@ -131,6 +131,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (theCollision.collider.tag == "Enemy")
             {
+                gameManager.GetComponent<Analytics>().updateTrapData("enemymonster");
                 Destroy(theCollision.gameObject);
                 currentHealth -= 20;
                 invincible = true;

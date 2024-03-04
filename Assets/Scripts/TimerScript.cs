@@ -61,6 +61,7 @@ public class TimerScript : MonoBehaviour
                     Destroy(player);
                 } else {
                     timerIsRunning = false;
+                    player.GetComponent<PlayerController>().invincible = true;
                     levelProgress.SetActive(true);
                     analyticsScript.PublishData();
                     float leftTimerValue = 0;

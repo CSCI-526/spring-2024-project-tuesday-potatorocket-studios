@@ -16,11 +16,13 @@ public class WheelSpin : MonoBehaviour
 
     private float smallDelay;
     private float randomPower;
+    private int bossBullet;
 
     private KeyCode spinKey = KeyCode.F; // Key that spins the wheel
     public GameObject Player;
     public GameObject bulletSpawner;
     public GameObject sword;
+    public GameObject gameManager;
 
     public TextMeshProUGUI wheelText;
 
@@ -30,11 +32,12 @@ public class WheelSpin : MonoBehaviour
         rbody = GetComponent<Rigidbody2D>();
         wheelTimer = 0f;
         spinning = 0;
-        RotatePower = 800;
-        StopPower = 100;
+        RotatePower = 400;
+        StopPower = 150;
         Player = GameObject.Find("Player");
+        gameManager = GameObject.Find("GameManager");
         wheelText = GameObject.Find("WheelOutcome").GetComponent<TextMeshProUGUI>();
-
+        bossBullet = 0;
     }
 
     private void Update()
@@ -50,7 +53,7 @@ public class WheelSpin : MonoBehaviour
 
 
 
-        if (Player != null && Input.GetKeyDown(spinKey) && Player.GetComponent<PlayerController>().coinCount > 0 && wheelTimer - wheelInterval > 1 && spinning == 0)
+        if (gameManager.GetComponent<TimerScript>().sliderTimer > 1 && Player != null && Input.GetKeyDown(spinKey) && Player.GetComponent<PlayerController>().coinCount > 0 && wheelTimer - wheelInterval > 1 && spinning == 0)
         { //Spin the wheel
             spinning = 1;
             randomPower = Random.Range(-200f, 200f); //Add random power so that you don't land on the same section every spin
@@ -91,7 +94,7 @@ public class WheelSpin : MonoBehaviour
     private void GetColor()
     {
         float mySector = transform.eulerAngles.z;
-        //float mySector = 48; //For testing purposes
+        //float mySector = 100; //For testing purposes
 
         if (mySector > 0 && mySector <= 45)
         {
@@ -104,7 +107,7 @@ public class WheelSpin : MonoBehaviour
             {
                 wheelText.text = "Yay! Temporarily removed wind";
                 wind.SetActive(false);
-                StartCoroutine(activateWind(5, wind));
+                StartCoroutine(activateWind(10, wind));
             }
 
         }
@@ -119,7 +122,7 @@ public class WheelSpin : MonoBehaviour
             {
                 wheelText.text = "Yessss! Removed wind";
                 wind.SetActive(false);
-                StartCoroutine(activateWind(5, wind));
+                StartCoroutine(activateWind(10, wind));
             }
         }
         else if (mySector > 90 && mySector <= 135)
@@ -128,9 +131,17 @@ public class WheelSpin : MonoBehaviour
             print("Red1");
             if (Player != null)
             {
-                Player.GetComponent<PlayerController>().moveSpeed *= 0.9f;
+                bossBullet += 1;
                 Instantiate(bulletSpawner, new Vector3(Camera.main.transform.position.x + 10, Camera.main.transform.position.y - 1, 0), Quaternion.identity);
-                wheelText.text = "Boo, bullet trap added.";
+                if (bossBullet == 1)
+                {
+                    wheelText.text = "Boo, boss bullet trap added.";
+                }
+                else
+                {
+                    wheelText.text = "Boss bullet trap has been buffed!.";
+                    
+                }
             }
 
         }
@@ -148,7 +159,7 @@ public class WheelSpin : MonoBehaviour
         else if (mySector > 180 && mySector <= 225)
         {
             print("Green2");
-            if (GameObject.FindWithTag("Sword") == null)
+            if (GlobalValues.level == 2 && GameObject.FindWithTag("Sword") == null)
             {
                 Instantiate(sword, Player.transform.position, Quaternion.identity);
             }
@@ -179,16 +190,26 @@ public class WheelSpin : MonoBehaviour
         else if (mySector > 270 && mySector <= 315)
         {
             print("Red2");
-            Player.GetComponent<PlayerController>().moveSpeed *= 0.9f;
+            
+            bossBullet += 1;
+            //Player.GetComponent<PlayerController>().moveSpeed *= 0.9f;
             Instantiate(bulletSpawner, new Vector3(10, -1, 0), Quaternion.identity);
-            wheelText.text = "Temporarily slowed down!";
+            if (bossBullet == 1)
+            {
+                wheelText.text = "Boo, boss bullet trap added.";
+            }
+            else
+            {
+                wheelText.text = "Boss bullet trap has been buffed!.";
+                    
+            }
 
         }
         else if (mySector > 315 && mySector <= 360)
         {
             print("Green4");
             
-            if (GameObject.FindWithTag("Sword") == null)
+            if (GlobalValues.level == 2 && GameObject.FindWithTag("Sword") == null)
             {
                 Instantiate(sword, Player.transform.position, Quaternion.identity);
             }

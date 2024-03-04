@@ -31,12 +31,12 @@ public class Sword : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        var idx = 0;
-        var closest = 10000000000000000f;
-        var i = 0;
         if (enemies != null)
         {
+
+            var idx = 0;
+            var closest = 10000000000000000f;
+            var i = 0;
             foreach (var e in enemies)
             {
 
