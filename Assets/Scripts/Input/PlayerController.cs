@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
         coinText = GameObject.Find("CoinUI").GetComponent<TextMeshProUGUI>();
         gameManager = GameObject.Find("GameManager");
         coinCount = GlobalValues.coin;
+        InvokeRepeating("SavePlayerLocation", 0, 1);
     }
 
     // Update is called once per frame
@@ -67,6 +68,16 @@ public class PlayerController : MonoBehaviour
 
         coinText.text = "Coins: " + coinCount;
 
+    }
+
+    private void SavePlayerLocation() {
+        if (GameObject.FindWithTag("LevelProgress") == null && gameObject != null)
+        {
+            Analytics analyticsScript = gameManager.GetComponent<Analytics>();
+            analyticsScript.playerLocationAnalytics.x = transform.position.x;
+            analyticsScript.playerLocationAnalytics.y = transform.position.y;
+            analyticsScript.PublishPlayerLocationAnalytics();
+        }
     }
 
     void FixedUpdate()

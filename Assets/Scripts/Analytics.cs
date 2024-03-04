@@ -24,6 +24,14 @@ public class WheelAnalytics {
     public int healthLeft;
 }
 
+public class PlayerLocationAnalytics {
+    public string guid;
+    public int level;
+    public float x;
+    public float y;
+    // public Rect screenRect; Screen corners are always (0,0), (1,1), (0,1), (1,0)
+}
+
 public class Analytics : MonoBehaviour
 {
 
@@ -33,6 +41,7 @@ public class Analytics : MonoBehaviour
     // Public getter for trapsData
     public Traps TrapsData => trapsData;
     public WheelAnalytics wheelAnalytics;
+    public PlayerLocationAnalytics playerLocationAnalytics;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +51,7 @@ public class Analytics : MonoBehaviour
         }
         trapsData = new Traps{ level = GlobalValues.level, guid = GlobalValues.guid};
         wheelAnalytics = new WheelAnalytics{ level = GlobalValues.level, guid = GlobalValues.guid };
+        playerLocationAnalytics = new PlayerLocationAnalytics{ level = GlobalValues.level, guid = GlobalValues.guid };
         flag = true;
     }
 
@@ -56,6 +66,10 @@ public class Analytics : MonoBehaviour
         wheelAnalytics.timeRemaining = (int) GameObject.FindWithTag("GameController").GetComponent<TimerScript>().sliderTimer;
         wheelAnalytics.healthLeft = (int) GameObject.FindWithTag("Player").GetComponent<PlayerController>().currentHealth;
         RestClient.Post("https://rogueroulette-efcf5-default-rtdb.firebaseio.com/Wheel/.json", JsonUtility.ToJson(wheelAnalytics));
+    }
+
+    public void PublishPlayerLocationAnalytics() {
+        RestClient.Post("https://rogueroulette-efcf5-default-rtdb.firebaseio.com/PlayerLocation/.json", JsonUtility.ToJson(playerLocationAnalytics));
     }
 
     public void PublishData() {

@@ -26,7 +26,7 @@ public class MainCamera : MonoBehaviour
         float targetaspect = 16.0f / 9.0f;
         float windowaspect = (float) Screen.width / Screen.height;
         float scaleheight = windowaspect / targetaspect;
-        Camera camera = GetComponent<Camera>();
+        Camera camera = Camera.main;
  
         if (scaleheight < 1.0f)
         {
