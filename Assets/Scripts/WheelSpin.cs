@@ -89,7 +89,9 @@ public class WheelSpin : MonoBehaviour
     //public PlayerController playerController;
     private void GetColor()
     {
-        float mySector = transform.eulerAngles.z;
+        // float mySector = transform.eulerAngles.z;
+        float mySector = 227; //For testing purposes
+
         if (mySector > 0 && mySector <= 45)
         {
 
@@ -99,7 +101,7 @@ public class WheelSpin : MonoBehaviour
             GameObject wind = GameObject.Find("Wind");
             if (wind != null)
             {
-                wheelText.text = "Yay! Removed wind";
+                wheelText.text = "Yay! Temporarily removed wind";
                 wind.SetActive(false);
                 StartCoroutine(activateWind(5, wind));
             }
@@ -126,7 +128,7 @@ public class WheelSpin : MonoBehaviour
             if (Player != null)
             {
                 Player.GetComponent<PlayerController>().moveSpeed *= 0.9f;
-                Instantiate(bulletSpawner, new Vector3(Camera.main.transform.position.x + 10,Camera.main.transform.position.y - 1, 0), Quaternion.identity);
+                Instantiate(bulletSpawner, new Vector3(Camera.main.transform.position.x + 10, Camera.main.transform.position.y - 1, 0), Quaternion.identity);
                 wheelText.text = "Boo, bullet trap added.";
             }
 
@@ -155,20 +157,26 @@ public class WheelSpin : MonoBehaviour
         {
             print("Green3");
 
-            BulletSpawner spin = FindObjectOfType<BulletSpawner>();
+            BulletSpawner[] spin = FindObjectsOfType<BulletSpawner>();
             if (spin != null)
             {
-                spin.cooldown = 0;
+                foreach (BulletSpawner s in spin)
+                {
+                    s.cooldown = 0;
+                    StartCoroutine(disableCooldown(5, s));
+                }
 
-                StartCoroutine(disableCooldown(5, spin));
-                wheelText.text = "Bullets deactivated!";
+                wheelText.text = "Bullets temporarily deactivated!";
             }
+
+
         }
         else if (mySector > 270 && mySector <= 315)
         {
             print("Red2");
             Player.GetComponent<PlayerController>().moveSpeed *= 0.9f;
             Instantiate(bulletSpawner, new Vector3(10, -1, 0), Quaternion.identity);
+            wheelText.text = "Temporarily slowed down!";
 
         }
         else if (mySector > 315 && mySector <= 360)
@@ -202,7 +210,8 @@ public class WheelSpin : MonoBehaviour
         wind.SetActive(true);
     }
 
-    public void activateShield() {
+    public void activateShield()
+    {
         Shield.SetActive(true);
         Player.GetComponent<PlayerController>().isShielded = true;
     }

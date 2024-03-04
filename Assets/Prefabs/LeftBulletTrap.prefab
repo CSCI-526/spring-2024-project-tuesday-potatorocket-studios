@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8875401396473822469, guid: decfa8940b6abbc41a69729e7a1bb908, type: 3}
-  bulletLife: 5
+  bulletLife: 20
   speed: 5
   spawnerType: 3
   firingRate: 0.3
