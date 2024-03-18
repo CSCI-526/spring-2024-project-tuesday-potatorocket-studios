@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class TimerScript : MonoBehaviour
 {
 
@@ -27,7 +28,7 @@ public class TimerScript : MonoBehaviour
         slider.maxValue = sliderTimer;
         slider.value = sliderTimer;
         mainCamera = Camera.main;
-        StartTimer();
+        if(SceneManager.GetActiveScene().name != "Tutorial") {StartTimer();}
         player = GameObject.FindWithTag("Player");
         gameController = GameObject.FindWithTag("GameController");
         analyticsScript = gameController.GetComponent<Analytics>();
