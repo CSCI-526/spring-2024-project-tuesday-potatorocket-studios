@@ -24,16 +24,19 @@ public class BulletSpawner : MonoBehaviour
     private float cooldownTimer = 0f;
     public float cooldown;
     private float direction = 1f;
+    
+    private GameObject wheelModal;
 
     // Start is called before the first frame update
     void Start()
     {
-
+    wheelModal = GameObject.Find("WheelModal");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (wheelModal != null && wheelModal.activeSelf) {return;}
         timer += Time.deltaTime;
         cooldownTimer += Time.deltaTime;
         //transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
