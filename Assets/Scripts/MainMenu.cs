@@ -12,4 +12,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Level1 - Alpha Separate Scene");
     }
 
+      public void PlayTutorial()
+    {
+        GlobalValues.level = 0;
+        GlobalValues.coin = 0;
+        SceneManager.LoadScene("Tutorial");
+    }
+
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WheelSpin : MonoBehaviour
 {
@@ -96,6 +97,12 @@ public class WheelSpin : MonoBehaviour
     {
         float mySector = transform.eulerAngles.z;
         // float mySector = 150; //For testing purposes
+
+        //Remove the wind for tutorial level
+        if(SceneManager.GetActiveScene().name == "Tutorial"){
+            mySector = 1;
+        }
+
 
         if (mySector > 0 && mySector <= 45)
         {

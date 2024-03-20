@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     public bool isShielded;
 
     public TextMeshProUGUI coinText;
+    [SerializeField]public TextMeshProUGUI tutorialText;
 
 
     [SerializeField] public float moveSpeed;
@@ -164,7 +165,28 @@ public class PlayerController : MonoBehaviour
             }
             coinCount++;
             GlobalValues.coin = coinCount;
+
+            //check if tutorial scene
+            if (SceneManager.GetActiveScene().name == "Tutorial" && coinCount == 1)
+            {
+                    tutorialText.text = "Great! Now let's try to get rid of that pesky wind. Press F to spin the wheel, you might get lucky.";
+               
+            }
+
+            if (SceneManager.GetActiveScene().name == "Tutorial" && theCollision.gameObject.name == "Coin")
+            {
+                    tutorialText.text = "Good job! Now you are ready to play. Survive in the next room with traps and monsters. Collect coins so you can use the wheel for help!";
+                    //wait 4 seconds and then load menu scene
+                    StartCoroutine(LoadMenuScene());
+
+            }
         }
+    }
+
+    private IEnumerator LoadMenuScene()
+    {
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene("MenuScene");
     }
 
     public void TakeDamage(float damage)

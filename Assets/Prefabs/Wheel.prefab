@@ -278,7 +278,7 @@ Transform:
   m_GameObject: {fileID: 2022811675866834995}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.41221, y: -0.2420343, z: -0.1095337}
+  m_LocalPosition: {x: 3.41221, y: -0.13, z: -0.1095337}
   m_LocalScale: {x: 1, y: 0.6643, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1227,7 +1227,7 @@ Transform:
   m_GameObject: {fileID: 9054329966820598450}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.41221, y: 1.319166, z: -0.1095337}
+  m_LocalPosition: {x: 3.41221, y: 1.4312003, z: -0.1095337}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1326,7 +1326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424ecdf28ceb10f4b8d9d66b8956dec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinKey: 107
   Player: {fileID: 0}
   bulletSpawner: {fileID: 9181265069078612727, guid: bad578fc620a0a14b83095bd26f62d8f, type: 3}
+  sword: {fileID: 0}
+  gameManager: {fileID: 0}
   wheelText: {fileID: 0}
+  Shield: {fileID: 0}
