@@ -153,40 +153,23 @@ public class PlayerController : MonoBehaviour
             {
                 StartCoroutine(MakeVulnerable());
             }
+
         }
 
-        if (theCollision.gameObject.tag == "Coin")
-        {
-            //do null check in case coin is fading out when player touches it
-            if (theCollision.gameObject != null)
-            {
-                Destroy(theCollision.gameObject);
-
-            }
-            coinCount++;
-            GlobalValues.coin = coinCount;
-
-            //check if tutorial scene
-            if (SceneManager.GetActiveScene().name == "Tutorial" && coinCount == 1)
-            {
-                    tutorialText.text = "Great! Now let's try to get rid of that pesky wind. Press F to spin the wheel, you might get lucky.";
-               
-            }
-
-            if (SceneManager.GetActiveScene().name == "Tutorial" && theCollision.gameObject.name == "Coin")
-            {
-                    tutorialText.text = "Good job! Now you are ready to play. Survive in the next room with traps and monsters. Collect coins so you can use the wheel for help!";
-                    //wait 4 seconds and then load menu scene
-                    StartCoroutine(LoadMenuScene());
-
-            }
-        }
+                 
+    }
+    
+    //called from coin script to load the menu after the tutorial
+    public void StartLoadMenuSceneCoroutine(float waitTime)
+    {
+        StartCoroutine(LoadMenuSceneCoroutine(waitTime));
     }
 
-    private IEnumerator LoadMenuScene()
+    IEnumerator LoadMenuSceneCoroutine(float waitTime)
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene("MenuScene");
+        
     }
 
     public void TakeDamage(float damage)

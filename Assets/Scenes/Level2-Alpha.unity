@@ -485,6 +485,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: Game Completed
       objectReference: {fileID: 0}
+    - target: {fileID: 4332043855601040603, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5032849156027747640, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
       propertyPath: m_Camera
       value: 
