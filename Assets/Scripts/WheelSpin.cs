@@ -27,6 +27,8 @@ public class WheelSpin : MonoBehaviour
 
     public TextMeshProUGUI wheelText;
 
+    private GameObject tutorialTextObject;
+
     public GameObject Shield;
     private void Start()
     {
@@ -39,6 +41,7 @@ public class WheelSpin : MonoBehaviour
         gameManager = GameObject.FindWithTag("GameController");
         wheelText = GameObject.Find("WheelOutcome").GetComponent<TextMeshProUGUI>();
         bossBullet = 0;
+        tutorialTextObject = GameObject.Find("TutorialText");
     }
 
     private void Update()
@@ -101,6 +104,12 @@ public class WheelSpin : MonoBehaviour
         //Remove the wind for tutorial level
         if(SceneManager.GetActiveScene().name == "Tutorial"){
             mySector = 1;
+
+            if(tutorialTextObject != null){
+                TextMeshProUGUI tutorialText = tutorialTextObject.GetComponent<TMPro.TextMeshProUGUI>();
+                tutorialText.text = "Nice! Now go for that coin!";
+            }
+
         }
 
 
@@ -115,7 +124,9 @@ public class WheelSpin : MonoBehaviour
             {
                 wheelText.text = "Yay! Temporarily removed wind";
                 wind.SetActive(false);
+                 if(SceneManager.GetActiveScene().name != "Tutorial"){
                 StartCoroutine(activateWind(10, wind));
+                 }
             }
 
         }
