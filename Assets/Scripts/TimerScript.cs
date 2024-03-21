@@ -53,7 +53,7 @@ public class TimerScript : MonoBehaviour
         if (wheelModal.activeSelf) {return;}
         if (player == null) {timerIsRunning = false;}
         //start the timer once the wheel modal is closed
-        if (wheelModal.activeSelf == false && !timerIsRunning) {
+        if (wheelModal.activeSelf == false && !timerIsRunning && player != null) {
             StartTimer();
         }
     }
