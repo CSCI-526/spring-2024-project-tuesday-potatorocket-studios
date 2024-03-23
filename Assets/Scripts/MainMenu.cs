@@ -19,4 +19,8 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
+    public void SelectLevel()
+    {
+        SceneManager.LoadScene("LevelSelectScene");
+    }
 }
