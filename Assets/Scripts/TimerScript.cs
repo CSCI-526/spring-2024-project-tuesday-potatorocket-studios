@@ -29,9 +29,9 @@ public class TimerScript : MonoBehaviour
         slider.maxValue = sliderTimer;
         slider.value = sliderTimer;
         
-        //find WheelModal rawimage and set it to active if you are in level 1
+        //find WheelModal rawimage and set it to active if you are not in tutorial
         wheelModal = GameObject.Find("WheelModal");
-        if(SceneManager.GetActiveScene().name == "SceneLevel1") {wheelModal.SetActive(true);
+        if(SceneManager.GetActiveScene().name != "Tutorial") {wheelModal.SetActive(true);
         
         }
         else {wheelModal.SetActive(false);}

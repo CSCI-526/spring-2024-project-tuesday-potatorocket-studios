@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WheelSpin : MonoBehaviour
 {
@@ -95,6 +96,15 @@ public class WheelSpin : MonoBehaviour
         // float mySector = 150; //For testing purposes
 
         //Remove the wind for tutorial level
+          if(SceneManager.GetActiveScene().name == "Tutorial"){
+            mySector = 1;
+
+            if(tutorialTextObject != null){
+                TextMeshProUGUI tutorialText = tutorialTextObject.GetComponent<TMPro.TextMeshProUGUI>();
+                tutorialText.text = "Nice! Now go for that coin!";
+            }
+
+        }
         if ((mySector > 0 && mySector <= 45) || GlobalValues.level == 0)
         {
             print("Green5");
