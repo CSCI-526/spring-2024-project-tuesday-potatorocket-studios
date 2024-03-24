@@ -22,6 +22,7 @@ public class WheelAnalytics {
     public int level;
     public int spinCount;
     public int healthLeft;
+    public int coinsFromLastLevel;
 }
 
 public class PlayerLocationAnalytics {
@@ -61,7 +62,8 @@ public class Analytics : MonoBehaviour
     }
 
     public void PublishWheelAnalytics() {
-        wheelAnalytics.coinCount = GlobalValues.coin;
+        wheelAnalytics.coinCount = GlobalValues.coins;
+        wheelAnalytics.coinsFromLastLevel = GlobalValues.coinsFromLastLevel;
         wheelAnalytics.spinCount += 1;
         wheelAnalytics.timeRemaining = (int) GameObject.FindWithTag("GameController").GetComponent<TimerScript>().sliderTimer;
         wheelAnalytics.healthLeft = (int) GameObject.FindWithTag("Player").GetComponent<PlayerController>().currentHealth;

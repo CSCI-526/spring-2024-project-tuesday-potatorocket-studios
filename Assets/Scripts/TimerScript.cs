@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,9 +11,7 @@ public class TimerScript : MonoBehaviour
 
     private Slider slider;
     public float sliderTimer;
-    private int lastLevel = 2;
     private bool timerIsRunning = false;
-    private Camera mainCamera;
     private GameObject levelProgress;
     public TextMeshProUGUI timerText;
     private GameObject player;
@@ -31,7 +28,6 @@ public class TimerScript : MonoBehaviour
         slider = GameObject.Find("SliderTimer").GetComponent<Slider>();
         slider.maxValue = sliderTimer;
         slider.value = sliderTimer;
-        mainCamera = Camera.main;
         
         //find WheelModal rawimage and set it to active if the scene is not the tutorial
         wheelModal = GameObject.Find("WheelModal");
@@ -41,11 +37,10 @@ public class TimerScript : MonoBehaviour
         else {wheelModal.SetActive(false);}
 
 
-        if(SceneManager.GetActiveScene().name != "Tutorial" && wheelModal != null && !wheelModal.activeSelf) {StartTimer();}
+        if (SceneManager.GetActiveScene().name != "Tutorial" && wheelModal != null && !wheelModal.activeSelf) { StartTimer(); }
         player = GameObject.FindWithTag("Player");
         gameController = GameObject.FindWithTag("GameController");
         analyticsScript = gameController.GetComponent<Analytics>();
-        analyticsScript.trapsData.level = GlobalValues.level;
     }
 
     public void Update()
@@ -70,7 +65,7 @@ public class TimerScript : MonoBehaviour
     {
         while (timerIsRunning)
         {
-            sliderTimer -= Time.deltaTime;
+            sliderTimer -= Time.deltaTime * GlobalValues.speedOfTime;
             yield return new WaitForSeconds(.001f);
 
             if (player == null)
@@ -81,18 +76,13 @@ public class TimerScript : MonoBehaviour
             if (sliderTimer <= 0)
             {
                 Traps trapsData = analyticsScript.TrapsData;
-                // if (GlobalValues.level == lastLevel) {
-                //     Destroy(player);
-                // } else {
-                    timerIsRunning = false;
-                    player.GetComponent<PlayerController>().invincible = true;
-                    levelProgress.SetActive(true);
-                    analyticsScript.PublishData();
-                    float leftTimerValue = 0;
-                    PlayerController playerScript = player.GetComponent<PlayerController>();
-                    int coinCount = playerScript.coinCount;
-                    timerText.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
-                // }
+                timerIsRunning = false;
+                player.GetComponent<PlayerController>().invincible = true;
+                levelProgress.SetActive(true);
+                analyticsScript.PublishData();
+                float leftTimerValue = 0;
+                int coinCount = GlobalValues.coins;
+                timerText.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
             }
             slider.value = sliderTimer;
         }
@@ -108,24 +98,8 @@ public class TimerScript : MonoBehaviour
 
     public void ProceedToNextLevel()
     {
-        /*Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + 58, 0, -10);
-        GameObject.FindWithTag("LevelProgress").SetActive(false);
-        player.transform.position = new Vector3(Camera.main.transform.position.x, -5, 0);
-        player.GetComponent<PlayerController>().currentHealth = 100;
-        gameController.GetComponent<CoinSpawner>().spawnCoins(Random.Range(4, 9));
-        int level = analyticsScript.trapsData.level;
-        analyticsScript.trapsData = new Traps{level = level + 1};
-        analyticsScript.flag = true;
-        sliderTimer = 30;
-        slider.value = sliderTimer;
-        slider.maxValue = sliderTimer;
-        timerIsRunning = true;
-        StartTimer();*/
-        
-        PlayerController playerScript = player.GetComponent<PlayerController>();
-        GlobalValues.coin = playerScript.coinCount;
         GlobalValues.level++;
-        SceneManager.LoadScene("Level2-Alpha");
-
+        GlobalValues.coinsFromLastLevel = GlobalValues.coins;
+        SceneManager.LoadScene("SceneLevel" + GlobalValues.level.ToString());
     }
 }
