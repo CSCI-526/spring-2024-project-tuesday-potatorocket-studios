@@ -481,6 +481,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 959040837022165474, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1650135670288474370, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -573,6 +577,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1373049740}
+    - target: {fileID: 3605110988568394990, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 933499563}
+    - target: {fileID: 3605110988568394990, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: closeWheelModal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874636084826052947, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845007662927276523, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5032849156027747640, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
       propertyPath: m_Camera
       value: 
@@ -613,6 +633,10 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7807895799435095722, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 953
+      objectReference: {fileID: 0}
     - target: {fileID: 8297792962672627820, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -622,6 +646,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+--- !u!114 &1137024083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 532602323356024473, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+  m_PrefabInstance: {fileID: 1137024082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1174190221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8929898424916570454, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
@@ -879,6 +914,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wheel
       objectReference: {fileID: 0}
+    - target: {fileID: 8357212461243012238, guid: 58c3f98a651e146498f25b541b8df588, type: 3}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 3169310460255118756, guid: 4da6c9ae520de254f9003b7c2567d6bc, type: 3}
+    - target: {fileID: 8357212461243012238, guid: 58c3f98a651e146498f25b541b8df588, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 274690968891980331, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
+    - target: {fileID: 8357212461243012238, guid: 58c3f98a651e146498f25b541b8df588, type: 3}
+      propertyPath: Shield
+      value: 
+      objectReference: {fileID: 4964576651541994836, guid: 59f437ed672649d4d8d1b2cca8f1fcc8, type: 3}
+    - target: {fileID: 8357212461243012238, guid: 58c3f98a651e146498f25b541b8df588, type: 3}
+      propertyPath: wheelText
+      value: 
+      objectReference: {fileID: 1137024083}
+    - target: {fileID: 8357212461243012238, guid: 58c3f98a651e146498f25b541b8df588, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 3275019380664649293, guid: b4633c4c192f747ff9de4fb3828d5709, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
