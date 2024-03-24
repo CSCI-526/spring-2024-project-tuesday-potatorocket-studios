@@ -29,15 +29,15 @@ public class PlayerController : MonoBehaviour
     private GameObject gameManager;
 
 
-    public int coinCount;
     public bool isShielded;
 
     public TextMeshProUGUI coinText;
-    [SerializeField]public TextMeshProUGUI tutorialText;
+    [SerializeField] public TextMeshProUGUI tutorialText;
 
 
     [SerializeField] public float moveSpeed;
     [SerializeField] public float jumpForce;
+    private int numCoins;
 
 
     // Start is called before the first frame update
@@ -49,11 +49,10 @@ public class PlayerController : MonoBehaviour
         healthBar = GameObject.FindWithTag("HealthBar").GetComponent<Image>();
         invincible = false;
         currentHealth = maxHealth;
-        coinCount = 0;
         coinText = GameObject.Find("CoinUI").GetComponent<TextMeshProUGUI>();
         gameManager = GameObject.Find("GameManager");
-        coinCount = GlobalValues.coin;
         InvokeRepeating("SavePlayerLocation", 0, 1);
+        numCoins = GameObject.FindGameObjectsWithTag("Coin").Length;
     }
 
     // Update is called once per frame
@@ -67,22 +66,31 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        coinText.text = "Coins: " + coinCount;
+        coinText.text = "Coins: " + GlobalValues.coins.ToString();
 
     }
 
-    private void SavePlayerLocation() {
+    private void SavePlayerLocation()
+    {
         if (GameObject.FindWithTag("LevelProgress") == null && gameObject != null)
         {
             Analytics analyticsScript = gameManager.GetComponent<Analytics>();
-            analyticsScript.playerLocationAnalytics.x = transform.position.x;
-            analyticsScript.playerLocationAnalytics.y = transform.position.y;
-            analyticsScript.PublishPlayerLocationAnalytics();
+            if (analyticsScript.playerLocationAnalytics != null)
+            {
+                analyticsScript.playerLocationAnalytics.x = transform.position.x;
+                analyticsScript.playerLocationAnalytics.y = transform.position.y;
+                analyticsScript.PublishPlayerLocationAnalytics();
+            }
         }
     }
 
     void FixedUpdate()
     {
+        if (GlobalValues.coins - GlobalValues.coinsFromLastLevel == numCoins)
+        {
+            GlobalValues.speedOfTime = 2f;
+        }
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -108,18 +116,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
-    /* Refactored for continuous movement in update function instead 
-    private void OnWASD(InputValue value)
-     {
-
-       //Vector2 move = value.Get<Vector2>();
-         //rb.velocity = move * moveSpeed;
-
-     }*/
-
-
-    //checks if player is on the ground
+    
     void OnCollisionEnter2D(Collision2D theCollision)
     {
         if (theCollision.gameObject.layer == LayerMask.NameToLayer("Ground"))
@@ -153,12 +150,9 @@ public class PlayerController : MonoBehaviour
             {
                 StartCoroutine(MakeVulnerable());
             }
-
         }
-
-                 
     }
-    
+
     //called from coin script to load the menu after the tutorial
     public void StartLoadMenuSceneCoroutine(float waitTime)
     {
@@ -169,7 +163,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene("MenuScene");
-        
+
     }
 
     public void TakeDamage(float damage)
@@ -190,7 +184,8 @@ public class PlayerController : MonoBehaviour
     private IEnumerator MakeVulnerable()
     {
         yield return new WaitForSeconds(invincibilityTime);
-        if (GameObject.FindWithTag("LevelProgress") == null) {
+        if (GameObject.FindWithTag("LevelProgress") == null)
+        {
             invincible = false;
         }
     }

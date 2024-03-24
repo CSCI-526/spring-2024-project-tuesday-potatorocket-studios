@@ -1,23 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
 {
 
     public GameObject coinPrefab;
+    private int numCoins;
 
 
     // Start is called before the first frame update
     void Start()
     {
         //spawn random number of coins between 3 and 8
-        int numCoins = Random.Range(3, 8);
+        numCoins = Random.Range(3, 8);
 
-        spawnCoins(numCoins);
+        spawnCoins();
     }
 
-    public void spawnCoins(int numCoins)
+    public void spawnCoins()
     {
         for (int i = 0; i < numCoins; i++)
         {
@@ -27,7 +27,6 @@ public class CoinSpawner : MonoBehaviour
             coin.gameObject.layer = 2;
 
             //StartCoroutine(FadeCoin(coin));
-
         }
     }
 
@@ -35,7 +34,6 @@ public class CoinSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     //fade the coin out and destroy it after 5 seconds
@@ -59,11 +57,6 @@ public class CoinSpawner : MonoBehaviour
                 }
             }
         }
-
         if (coin != null) { Destroy(coin); }
-
     }
-
-
-
 }

@@ -35,7 +35,7 @@ public class GameOver : MonoBehaviour
             gameManagerScript.GetComponent<Analytics>().PublishData();
 
             float leftTimerValue = Mathf.Ceil(gameManagerScript.sliderTimer);
-            int coinCount = playerScript.coinCount;
+            int coinCount = GlobalValues.coins;
             // Access trapsData from analyticsScript
             Traps trapsData = analyticsScript.TrapsData;
 
@@ -46,7 +46,7 @@ public class GameOver : MonoBehaviour
 
     public void Restart()
     {
-        GlobalValues.coin = 0;
+        GlobalValues.coins = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

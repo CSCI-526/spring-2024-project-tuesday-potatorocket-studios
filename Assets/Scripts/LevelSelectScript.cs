@@ -21,7 +21,7 @@ public class LevelSelectScript : MonoBehaviour
 
     public void OpenScene() {
         GlobalValues.level = levelNumber;
-        GlobalValues.coin = 0;
+        GlobalValues.coins = 0;
         SceneManager.LoadScene(levelName.ToString());
     }
 }

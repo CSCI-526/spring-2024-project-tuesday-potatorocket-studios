@@ -534,7 +534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1250944787981778919, guid: ac07be813f7a17d428f482645f2b5269, type: 3}
       propertyPath: levelName
-      value: Level2-Alpha
+      value: SceneLevel2
       objectReference: {fileID: 0}
     - target: {fileID: 1250944787981778919, guid: ac07be813f7a17d428f482645f2b5269, type: 3}
       propertyPath: levelNumber
@@ -784,7 +784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1250944787981778919, guid: ac07be813f7a17d428f482645f2b5269, type: 3}
       propertyPath: levelName
-      value: Level1 - Alpha Separate Scene
+      value: SceneLevel1
       objectReference: {fileID: 0}
     - target: {fileID: 1250944787981778919, guid: ac07be813f7a17d428f482645f2b5269, type: 3}
       propertyPath: levelNumber

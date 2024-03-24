@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class WheelSpin : MonoBehaviour
 {
@@ -27,7 +25,7 @@ public class WheelSpin : MonoBehaviour
 
     public TextMeshProUGUI wheelText;
 
-    private GameObject tutorialTextObject;
+    private TextMeshProUGUI tutorialTextObject;
 
     public GameObject Shield;
     private void Start()
@@ -41,7 +39,8 @@ public class WheelSpin : MonoBehaviour
         gameManager = GameObject.FindWithTag("GameController");
         wheelText = GameObject.Find("WheelOutcome").GetComponent<TextMeshProUGUI>();
         bossBullet = 0;
-        tutorialTextObject = GameObject.Find("TutorialText");
+        tutorialTextObject = GameObject.Find("TutorialText").GetComponent<TextMeshProUGUI>();
+        StartCoroutine(MakeTextDisappear());
     }
 
     private void Update()
@@ -49,20 +48,18 @@ public class WheelSpin : MonoBehaviour
         wheelTimer += Time.deltaTime;
 
         //If player has no coins, they can't spin the wheel
-        if (Player != null && Input.GetKeyDown(spinKey) && Player.GetComponent<PlayerController>().coinCount == 0)
+        if (Player != null && Input.GetKeyDown(spinKey) && GlobalValues.coins == 0)
         {
             wheelText.text = "Not enough coins to spin!";
-            StartCoroutine(ChangeText());
+            StartCoroutine(MakeTextDisappear());
         }
 
-
-
-        if (gameManager.GetComponent<TimerScript>().sliderTimer > 1 && Player != null && Input.GetKeyDown(spinKey) && Player.GetComponent<PlayerController>().coinCount > 0 && wheelTimer - wheelInterval > 1 && spinning == 0)
+        if (gameManager.GetComponent<TimerScript>().sliderTimer > 1 && Player != null && Input.GetKeyDown(spinKey) && GlobalValues.coins > 0 && wheelTimer - wheelInterval > 1 && spinning == 0)
         { //Spin the wheel
             spinning = 1;
             randomPower = Random.Range(-200f, 200f); //Add random power so that you don't land on the same section every spin
             rbody.AddTorque(RotatePower + randomPower);
-            Player.GetComponent<PlayerController>().coinCount -= 1;
+            GlobalValues.coins -= 1;
             gameManager.GetComponent<Analytics>().PublishWheelAnalytics();
             //Player.GetComponent<PlayerController>().coinText.text = "Coins: " + Player.GetComponent<PlayerController>().coinCount;
         }
@@ -77,22 +74,18 @@ public class WheelSpin : MonoBehaviour
             rbody.angularVelocity = 0;
         }
 
-        if (rbody.angularVelocity == 0 && spinning == 1)
+        if (rbody.totalTorque == 0 && rbody.angularVelocity == 0 && spinning == 1)
         { //Wheel is stopped
-
             smallDelay += 1 * Time.deltaTime; //To prevent update speed issues. Otherwise it thinks the exact moment we sping the wheel as stopped
             if (smallDelay >= 0.1f)
             {
                 //print("Stopped");
-                GetColor();
                 wheelTimer = 0f;
                 spinning = 0;
+                GetColor();
                 smallDelay = 0;
             }
-
         }
-
-
     }
 
     //public PlayerController playerController;
@@ -102,21 +95,8 @@ public class WheelSpin : MonoBehaviour
         // float mySector = 150; //For testing purposes
 
         //Remove the wind for tutorial level
-        if(SceneManager.GetActiveScene().name == "Tutorial"){
-            mySector = 1;
-
-            if(tutorialTextObject != null){
-                TextMeshProUGUI tutorialText = tutorialTextObject.GetComponent<TMPro.TextMeshProUGUI>();
-                tutorialText.text = "Nice! Now go for that coin!";
-            }
-
-        }
-
-
-        if (mySector > 0 && mySector <= 45)
+        if ((mySector > 0 && mySector <= 45) || GlobalValues.level == 0)
         {
-
-            //playerController.moveSpeed = 50f;
             print("Green5");
 
             GameObject wind = GameObject.Find("Wind");
@@ -124,16 +104,19 @@ public class WheelSpin : MonoBehaviour
             {
                 wheelText.text = "Yay! Temporarily removed wind";
                 wind.SetActive(false);
-                 if(SceneManager.GetActiveScene().name != "Tutorial"){
                 StartCoroutine(activateWind(10, wind));
-                 }
+            }
+
+            if (GlobalValues.level == 0 && tutorialTextObject != null)
+            {
+                TextMeshProUGUI tutorialText = tutorialTextObject.GetComponent<TMPro.TextMeshProUGUI>();
+                tutorialText.text = "Nice! Now go for that coin!";
             }
 
         }
         else if (mySector > 45 && mySector <= 90)
         {
 
-            //playerController.moveSpeed = 50f;
             print("Green6");
 
             GameObject wind = GameObject.Find("Wind (1)");
@@ -146,7 +129,6 @@ public class WheelSpin : MonoBehaviour
         }
         else if (mySector > 90 && mySector <= 135)
         {
-            //playerController.moveSpeed = 50f;
             print("Red1");
             if (Player != null)
             {
@@ -159,7 +141,7 @@ public class WheelSpin : MonoBehaviour
                 else
                 {
                     wheelText.text = "Boss bullet trap has been buffed!.";
-                    
+
                 }
             }
 
@@ -182,9 +164,9 @@ public class WheelSpin : MonoBehaviour
             {
                 Instantiate(sword, Player.transform.position, Quaternion.identity);
             }
-            else if (Player != null)
+            else
             {
-                Player.GetComponent<PlayerController>().coinCount += 10;
+                GlobalValues.coins += 10;
                 wheelText.text = "Got 10 coins!";
             }
         }
@@ -209,7 +191,7 @@ public class WheelSpin : MonoBehaviour
         else if (mySector > 270 && mySector <= 315)
         {
             print("Red2");
-            
+
             bossBullet += 1;
             //Player.GetComponent<PlayerController>().moveSpeed *= 0.9f;
             Instantiate(bulletSpawner, new Vector3(10, -1, 0), Quaternion.identity);
@@ -220,31 +202,26 @@ public class WheelSpin : MonoBehaviour
             else
             {
                 wheelText.text = "Boss bullet trap has been buffed!.";
-                    
+
             }
 
         }
         else if (mySector > 315 && mySector <= 360)
         {
             print("Green4");
-            
+
             if (GlobalValues.level == 2 && GameObject.FindWithTag("Sword") == null)
             {
                 Instantiate(sword, Player.transform.position, Quaternion.identity);
             }
-            else if (Player != null)
-            {
-                Player.GetComponent<PlayerController>().coinCount += 10;
-                wheelText.text = "Got 10 coins!";
-            }
         }
-        StartCoroutine(ChangeText());
+        StartCoroutine(MakeTextDisappear());
     }
 
-    IEnumerator ChangeText()
+    IEnumerator MakeTextDisappear()
     {
         yield return new WaitForSeconds(3);
-        wheelText.text = "Press F to Spin";
+        wheelText.text = "";
     }
 
     IEnumerator disableCooldown(int time, BulletSpawner spin)
