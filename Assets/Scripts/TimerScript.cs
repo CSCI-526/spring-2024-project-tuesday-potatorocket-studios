@@ -29,9 +29,9 @@ public class TimerScript : MonoBehaviour
         slider.maxValue = sliderTimer;
         slider.value = sliderTimer;
         
-        //find WheelModal rawimage and set it to active if the scene is not the tutorial
+        //find WheelModal rawimage and set it to active if you are in level 1
         wheelModal = GameObject.Find("WheelModal");
-        if(SceneManager.GetActiveScene().name == "Level1 - Alpha Separate Scene") {wheelModal.SetActive(true);
+        if(SceneManager.GetActiveScene().name == "SceneLevel1") {wheelModal.SetActive(true);
         
         }
         else {wheelModal.SetActive(false);}
@@ -48,7 +48,7 @@ public class TimerScript : MonoBehaviour
         if (wheelModal.activeSelf) {return;}
         if (player == null) {timerIsRunning = false;}
         //start the timer once the wheel modal is closed
-        if (wheelModal.activeSelf == false && !timerIsRunning && player != null) {
+       if (SceneManager.GetActiveScene().name != "Tutorial" && wheelModal.activeSelf == false && !timerIsRunning && player != null) {
             StartTimer();
         }
     }
