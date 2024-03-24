@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,9 +16,6 @@ public class TimerScript : MonoBehaviour
     private GameObject player;
     private GameObject gameController;
     private Analytics analyticsScript;
-
-    [SerializeField]
-    private GameObject wheelModal;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,29 +24,10 @@ public class TimerScript : MonoBehaviour
         slider = GameObject.Find("SliderTimer").GetComponent<Slider>();
         slider.maxValue = sliderTimer;
         slider.value = sliderTimer;
-        
-        //find WheelModal rawimage and set it to active if the scene is not the tutorial
-        wheelModal = GameObject.Find("WheelModal");
-        if(SceneManager.GetActiveScene().name == "Level1 - Alpha Separate Scene") {wheelModal.SetActive(true);
-        
-        }
-        else {wheelModal.SetActive(false);}
-
-
-        if (SceneManager.GetActiveScene().name != "Tutorial" && wheelModal != null && !wheelModal.activeSelf) { StartTimer(); }
+        if (SceneManager.GetActiveScene().name != "Tutorial") { StartTimer(); }
         player = GameObject.FindWithTag("Player");
         gameController = GameObject.FindWithTag("GameController");
         analyticsScript = gameController.GetComponent<Analytics>();
-    }
-
-    public void Update()
-    {
-        if (wheelModal.activeSelf) {return;}
-        if (player == null) {timerIsRunning = false;}
-        //start the timer once the wheel modal is closed
-        if (wheelModal.activeSelf == false && !timerIsRunning && player != null) {
-            StartTimer();
-        }
     }
 
     public void StartTimer()
@@ -87,13 +64,6 @@ public class TimerScript : MonoBehaviour
             slider.value = sliderTimer;
         }
 
-    }
-
-    public void closeWheelModal()
-    {
-        GameObject wheelModal = GameObject.Find("WheelModal");
-        wheelModal.SetActive(false);
-        
     }
 
     public void ProceedToNextLevel()

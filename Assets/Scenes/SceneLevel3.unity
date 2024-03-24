@@ -561,10 +561,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Restart
       objectReference: {fileID: 0}
-    - target: {fileID: 8470697877110402601, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4332043855601040603, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
