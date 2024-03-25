@@ -95,9 +95,7 @@ public class TimerScript : MonoBehaviour
             if (sliderTimer <= 0)
             {
                 Traps trapsData = analyticsScript.TrapsData;
-                timerIsRunning = false;
                 Time.timeScale = 0;
-                player.GetComponent<PlayerController>().invincible = true;
                 levelProgress.SetActive(true);
                 analyticsScript.PublishData();
                 float leftTimerValue = 0;
