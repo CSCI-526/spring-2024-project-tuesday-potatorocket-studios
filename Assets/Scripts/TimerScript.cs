@@ -47,6 +47,7 @@ public class TimerScript : MonoBehaviour
             else
             {
                 wheelModal.SetActive(false);
+                StartTimer();
             }
         }
         gameController = GameObject.FindWithTag("GameController");
