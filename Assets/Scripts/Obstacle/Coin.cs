@@ -38,7 +38,7 @@ public class Coin : MonoBehaviour
 
             else if (SceneManager.GetActiveScene().name == "Tutorial" && name == "Coin")
             {
-                tutorialText.text = "Good job! Now you are ready to play. Survive in the next room with traps and monsters.\n\n Collect coins so you can use the wheel for help (if you get all the coins, the timer speeds up)!";
+                tutorialText.text = "Good job! Now survive the rooms until the timer runs out by avoiding traps and monsters.\n\n Collect coins so you can use the wheel for buffs (if you get all the coins, the timer speeds up)!";
                 playerScript.StartLoadMenuSceneCoroutine(5.0f);
                 Destroy(gameObject);
 

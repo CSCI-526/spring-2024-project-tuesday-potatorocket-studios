@@ -34,13 +34,20 @@ public class TimerScript : MonoBehaviour
         if (sceneName == "Tutorial")
         {
             GlobalValues.level = 0;
-            playerScript.invincible = true;
+            //playerScript.invincible = true;
         }
         else
         {
             GlobalValues.level = sceneName[sceneName.Length - 1] - '0';
-            wheelModal.SetActive(true);
-            Time.timeScale = 0;
+            if (GlobalValues.level == 1)
+            {
+                wheelModal.SetActive(true);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                wheelModal.SetActive(false);
+            }
         }
         gameController = GameObject.FindWithTag("GameController");
         analyticsScript = gameController.GetComponent<Analytics>();

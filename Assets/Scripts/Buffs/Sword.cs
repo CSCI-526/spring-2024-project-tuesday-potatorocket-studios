@@ -33,25 +33,28 @@ public class Sword : MonoBehaviour
     {
         if (enemies != null)
         {
-
-            var idx = 0;
-            var closest = 10000000000000000f;
-            var i = 0;
-            foreach (var e in enemies)
+            if (enemies.Length > 0)
             {
-
-                var d = Vector3.Distance(this.transform.position, e.transform.position);
-                if (d < closest)
+                var idx = 0;
+                var closest = 10000000000000000f;
+                var i = 0;
+                foreach (var e in enemies)
                 {
-                    closest = d;
-                    idx = i;
+
+                    var d = Vector3.Distance(this.transform.position, e.transform.position);
+                    if (d < closest)
+                    {
+                        closest = d;
+                        idx = i;
+                    }
+
+                    i++;
                 }
+                //this.transform.LookAt(enemies[idx].transform.position);
 
-                i++;
+                
+                transform.right = transform.position - enemies[idx].transform.position;
             }
-            //this.transform.LookAt(enemies[idx].transform.position);
-
-            transform.right = transform.position - enemies[idx].transform.position;
         }
     }
 
