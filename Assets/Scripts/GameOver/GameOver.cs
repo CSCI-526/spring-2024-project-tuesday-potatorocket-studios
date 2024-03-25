@@ -10,7 +10,7 @@ public class GameOver : MonoBehaviour
 {
     public GameObject gameOverPanel;
     private TimerScript gameManagerScript;
-    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI gameOverLose;
     private PlayerController playerScript;
     private Analytics analyticsScript;
 
@@ -40,7 +40,7 @@ public class GameOver : MonoBehaviour
             Traps trapsData = analyticsScript.TrapsData;
 
             //timerText.text = "Time Left:" + leftTimerValue.ToString() + "s\nCoin Count:" + coinCount.ToString();
-            timerText.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
+            gameOverLose.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
         }
     }
 
