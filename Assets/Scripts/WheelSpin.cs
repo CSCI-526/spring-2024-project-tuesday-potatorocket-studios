@@ -27,6 +27,8 @@ public class WheelSpin : MonoBehaviour
 
     private TextMeshProUGUI tutorialTextObject;
 
+    private float originalJumpForce;
+
     public GameObject Shield;
     private void Start()
     {
@@ -92,7 +94,7 @@ public class WheelSpin : MonoBehaviour
     private void GetColor()
     {
         float mySector = transform.eulerAngles.z;
-        // float mySector = 150; //For testing purposes
+        //float mySector = 320; //For testing purposes
 
         //Remove the wind for tutorial level
         if ((mySector > 0 && mySector <= 45) || GlobalValues.level == 0)
@@ -214,6 +216,13 @@ public class WheelSpin : MonoBehaviour
             {
                 Instantiate(sword, Player.transform.position, Quaternion.identity);
             }
+            else {
+                //increase player jumpForce
+                originalJumpForce = Player.GetComponent<PlayerController>().jumpForce;
+                Player.GetComponent<PlayerController>().jumpForce*= 2f;
+                StartCoroutine(jumpCooldown(5));
+                wheelText.text = "Increased jump temporarily!";
+            }
         }
         StartCoroutine(MakeTextDisappear());
     }
@@ -234,6 +243,13 @@ public class WheelSpin : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         wind.SetActive(true);
+    }
+
+    IEnumerator jumpCooldown(int time)
+    {
+        
+        yield return new WaitForSeconds(time);
+        Player.GetComponent<PlayerController>().jumpForce = originalJumpForce;
     }
 
     public void activateShield()
