@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void SelectLevel()
     {
-        SceneManager.LoadScene("LevelSelectScene");
+        MandatoryTutorial.levelSelectPin.SetActive(true);
+        MandatoryTutorial.levelSelectPin.GetComponent<TMPro.TMP_InputField>().ActivateInputField();
     }
 }
