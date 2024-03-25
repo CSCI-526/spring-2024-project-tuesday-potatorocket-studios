@@ -57,6 +57,7 @@ public class TimerScript : MonoBehaviour
     public void StartTimer()
     {
         timerIsRunning = true;
+        Time.timeScale = 1;
         StartCoroutine(UpdateTimer());
     }
 
@@ -95,6 +96,7 @@ public class TimerScript : MonoBehaviour
             {
                 Traps trapsData = analyticsScript.TrapsData;
                 timerIsRunning = false;
+                Time.timeScale = 0;
                 player.GetComponent<PlayerController>().invincible = true;
                 levelProgress.SetActive(true);
                 analyticsScript.PublishData();
