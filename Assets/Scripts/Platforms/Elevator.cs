@@ -8,6 +8,8 @@ public class Elevator : MonoBehaviour
 
     public int speed;
 
+    public int waitTime;
+
     private float currentLocation;
 
     private float initialLocation;
@@ -24,6 +26,7 @@ public class Elevator : MonoBehaviour
         initialLocation = this.transform.position.y;
         direction = Vector3.up;
         wait = false;
+        waitTime = 3;
     }
 
     // Update is called once per frame
@@ -44,7 +47,7 @@ public class Elevator : MonoBehaviour
         if (wait)
         {
             waitTimer += Time.deltaTime;
-            if (waitTimer >= 3)
+            if (waitTimer >= waitTime)
             {
                 wait = false;
                 waitTimer = 0;
