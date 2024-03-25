@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,7 +31,8 @@ public class TimerScript : MonoBehaviour
         wheelModal = GameObject.Find("WheelModal");
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
-        String sceneName = SceneManager.GetActiveScene().name;
+        string sceneName = SceneManager.GetActiveScene().name;
+        Time.timeScale = 1;
         if (sceneName == "Tutorial")
         {
             GlobalValues.level = 0;
@@ -57,7 +59,6 @@ public class TimerScript : MonoBehaviour
     public void StartTimer()
     {
         timerIsRunning = true;
-        Time.timeScale = 1;
         StartCoroutine(UpdateTimer());
     }
 
@@ -68,14 +69,7 @@ public class TimerScript : MonoBehaviour
             wheelModal.SetActive(!wheelModal.activeSelf);
             timerIsRunning = !timerIsRunning;
             StartCoroutine(UpdateTimer());
-            if (Time.timeScale == 1)
-            {
-                Time.timeScale = 0;
-            }
-            else
-            {
-                Time.timeScale = 1;
-            }
+            Time.timeScale = (Time.timeScale + 1) % 2;
         }
     }
 
