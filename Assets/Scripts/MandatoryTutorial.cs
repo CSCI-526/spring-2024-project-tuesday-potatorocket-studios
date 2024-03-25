@@ -45,5 +45,9 @@ public class MandatoryTutorial : MonoBehaviour
         {
             SceneManager.LoadScene("LevelSelectScene");
         }
+        else
+        {
+            levelSelectPin.SetActive(false);
+        }
     }
 }
