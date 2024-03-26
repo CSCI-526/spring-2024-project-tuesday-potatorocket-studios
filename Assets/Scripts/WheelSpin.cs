@@ -215,6 +215,7 @@ public class WheelSpin : MonoBehaviour
             if ((GlobalValues.level == 4 || GlobalValues.level == 6) && GameObject.FindWithTag("Sword") == null)
             {
                 Instantiate(sword, Player.transform.position, Quaternion.identity);
+                wheelText.text = "Use the sword to kill the enemy!";
             }
             else {
                 //increase player jumpForce

@@ -176,6 +176,10 @@ PrefabInstance:
       propertyPath: gameOverWin
       value: 
       objectReference: {fileID: 1939640989}
+    - target: {fileID: 2549880888946560373, guid: b4633c4c192f747ff9de4fb3828d5709, type: 3}
+      propertyPath: sliderTimer
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3275019380664649293, guid: b4633c4c192f747ff9de4fb3828d5709, type: 3}
       propertyPath: m_Name
       value: GameManager
