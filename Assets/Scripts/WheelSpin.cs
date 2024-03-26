@@ -162,7 +162,7 @@ public class WheelSpin : MonoBehaviour
         else if (mySector > 180 && mySector <= 225)
         {
             print("Green2");
-            if (GlobalValues.level == 2 && GameObject.FindWithTag("Sword") == null)
+            if ((GlobalValues.level == 4 || GlobalValues.level == 6) && GameObject.FindWithTag("Sword") == null)
             {
                 Instantiate(sword, Player.transform.position, Quaternion.identity);
             }
@@ -212,7 +212,7 @@ public class WheelSpin : MonoBehaviour
         {
             print("Green4");
 
-            if (GlobalValues.level == 2 && GameObject.FindWithTag("Sword") == null)
+            if ((GlobalValues.level == 4 || GlobalValues.level == 6) && GameObject.FindWithTag("Sword") == null)
             {
                 Instantiate(sword, Player.transform.position, Quaternion.identity);
             }
