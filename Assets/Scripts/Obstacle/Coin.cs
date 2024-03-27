@@ -32,7 +32,7 @@ public class Coin : MonoBehaviour
             //check if tutorial scene
             if (SceneManager.GetActiveScene().name == "Tutorial" && name == "Coin (1)")
             {
-                tutorialText.text = "Great! Now let's try to get rid of that pesky wind. Press F to spin the wheel, you might get lucky.";
+                tutorialText.text = "Great! Now let's try to get rid of that pesky wind. Press E to spin the wheel, you might get lucky.";
                 Destroy(gameObject);
             }
 
