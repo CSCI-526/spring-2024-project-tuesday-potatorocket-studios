@@ -14,7 +14,7 @@ public class TimerScript : MonoBehaviour
     public float sliderTimer;
     private bool timerIsRunning = false;
     private GameObject levelProgress;
-    public TextMeshProUGUI gameOverWin;
+   // public TextMeshProUGUI gameOverWin;
     private GameObject player;
     private PlayerController playerScript;
     private GameObject gameController;
@@ -94,7 +94,7 @@ public class TimerScript : MonoBehaviour
                 analyticsScript.PublishData();
                 float leftTimerValue = 0;
                 int coinCount = GlobalValues.coins;
-                gameOverWin.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
+               // gameOverWin.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
             }
             slider.value = sliderTimer;
         }
