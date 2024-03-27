@@ -2017,6 +2017,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4332043855601040603, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+    - {fileID: 1048041979527706599, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1650135670288474370, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
       insertIndex: 0
@@ -2315,7 +2316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f43b178e9af4f4866b99b23f13d4b859, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dc79f3dc2dc1142f9a45ce2136efac43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
