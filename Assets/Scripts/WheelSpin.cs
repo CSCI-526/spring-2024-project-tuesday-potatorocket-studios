@@ -16,7 +16,7 @@ public class WheelSpin : MonoBehaviour
     private float randomPower;
     private int bossBullet;
 
-    private KeyCode spinKey = KeyCode.F; // Key that spins the wheel
+    private KeyCode spinKey = KeyCode.E; // Key that spins the wheel
     public GameObject Player;
     public GameObject bulletSpawner;
     public GameObject sword;
