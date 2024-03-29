@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 9
   speed: 4
+  waitTime: 0
 --- !u!50 &5912190895095421191
 Rigidbody2D:
   serializedVersion: 4

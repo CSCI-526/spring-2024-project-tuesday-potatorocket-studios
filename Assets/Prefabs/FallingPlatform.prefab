@@ -106,7 +106,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3648514430475538695, guid: 81dfba214d6469247aa09b108a4fb3f9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81dfba214d6469247aa09b108a4fb3f9, type: 3}
@@ -130,6 +131,10 @@ PrefabInstance:
     - target: {fileID: 559229267490346869, guid: 81dfba214d6469247aa09b108a4fb3f9, type: 3}
       propertyPath: m_Name
       value: BottomCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 559229267490346869, guid: 81dfba214d6469247aa09b108a4fb3f9, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4076826159143818731, guid: 81dfba214d6469247aa09b108a4fb3f9, type: 3}
       propertyPath: m_Enabled
@@ -193,7 +198,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6086923974404274710, guid: 81dfba214d6469247aa09b108a4fb3f9, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3648514430475538695, guid: 81dfba214d6469247aa09b108a4fb3f9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81dfba214d6469247aa09b108a4fb3f9, type: 3}
