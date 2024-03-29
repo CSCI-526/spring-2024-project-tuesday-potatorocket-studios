@@ -12,7 +12,7 @@ public class Shield : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shieldTimer = 10f;
+        shieldTimer = 5f;
         this.gameObject.SetActive(false);
         playerScript = player.GetComponent<PlayerController>();
     }
