@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletSpawner : MonoBehaviour
 {
-    enum SpawnerType { Spin, Down, Up, Left, Right }
+    enum SpawnerType { Spin, Down, Up, Left, Right, Track }
 
     [Header("Bullet Attributes")]
     public GameObject bullet;
@@ -24,10 +24,18 @@ public class BulletSpawner : MonoBehaviour
     private float cooldownTimer = 0f;
     public float cooldown;
     private float direction = 1f;
+    private GameObject player; // Reference to the player GameObject
+    public Transform target;
+    private Vector2 trackDirection;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player"); // Find the player GameObject by tag
+        if (player != null) // Check if the player was found
+        {
+            target = player.transform; // Assign the player's transform to target
+        }
     }
 
     // Update is called once per frame
@@ -79,7 +87,20 @@ public class BulletSpawner : MonoBehaviour
                 direction = direction * -1f;
             }
         }
-        transform.Rotate(0, 0, rotationSpeed * direction * Time.deltaTime);
+        else if (spawnerType == SpawnerType.Track) {
+            if (target == null) // Check if the target has been destroyed or is null
+            {
+                return; // Exit the Update method early if target is null
+            }
+            trackDirection = target.position - transform.position;
+            angle = Mathf.Atan2(trackDirection.y, trackDirection.x) * Mathf.Rad2Deg;
+            Quaternion trackRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, trackRotation, rotationSpeed * Time.deltaTime);
+
+        }
+        if (spawnerType != SpawnerType.Track) {
+            transform.Rotate(0, 0, rotationSpeed * direction * Time.deltaTime);
+        }
 
         //if (timer > cooldown) {
         if ((cooldownCheck == false) && (cooldownTimer > cooldown))
