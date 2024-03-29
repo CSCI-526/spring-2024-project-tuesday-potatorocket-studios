@@ -119,9 +119,10 @@ public class PlayerController : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D theCollision)
     {
-        if (theCollision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            isGrounded = true;
+        if (theCollision.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+            if (theCollision.contacts[0].normal.y == 1) {
+                isGrounded = true;
+            }
         }
 
         if (!invincible && (isShielded == false))

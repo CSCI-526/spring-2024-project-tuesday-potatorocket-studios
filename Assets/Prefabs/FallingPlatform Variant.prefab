@@ -85,7 +85,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4068495131507658217, guid: 2282f07af4c1f4a7495d1732b6a7a029, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 943181146253527963, guid: 2282f07af4c1f4a7495d1732b6a7a029, type: 3}
@@ -114,4 +115,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aae76701cf682e4b8a75c1db611278b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BottomCollider: {fileID: 0}
   rb: {fileID: 443180620542954486}
