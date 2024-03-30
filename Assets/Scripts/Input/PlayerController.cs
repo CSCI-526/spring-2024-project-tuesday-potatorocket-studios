@@ -154,6 +154,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D col){
+        if (col.name == "DownBulletTrap" || col.name == "LeftBulletTrap" || col.name == "RightBulletTrap" || col.name == "SpinBulletTrap" || col.name == "TrackingBulletTrap"){
+            //TODO: Add Analytics
+            currentHealth -= typeTwoTrapDamage;
+            invincible = true;
+        }
+        
+    }
+
     //called from coin script to load the menu after the tutorial
     public void StartLoadMenuSceneCoroutine(float waitTime)
     {
