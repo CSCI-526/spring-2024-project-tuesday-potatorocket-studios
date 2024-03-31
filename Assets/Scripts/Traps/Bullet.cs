@@ -48,6 +48,12 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject); // Destroy the bullet when it hits a border
         }
 
+        // if (collision.collider.tag == "EnemyBullet")
+        // {
+        //     //Destroy(this.gameObject); // Destroy the bullet when it hits another bullet
+        //     continue
+        // }
+
 
 
         if (collision.gameObject.layer == 3)

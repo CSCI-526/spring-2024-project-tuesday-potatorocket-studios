@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private float typeTwoTrapDamage = 15;
     private float typeThreeTrapDamage = 20;
     private GameObject gameManager;
+    private int invincibleFlag = 0;
 
 
     public bool isShielded;
@@ -143,7 +144,7 @@ public class PlayerController : MonoBehaviour
             {
                 gameManager.GetComponent<Analytics>().updateTrapData("enemymonster");
                 Destroy(theCollision.gameObject);
-                currentHealth -= 20;
+                currentHealth -= 25;
                 invincible = true;
             }
 
