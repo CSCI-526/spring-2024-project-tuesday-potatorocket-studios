@@ -513,6 +513,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1954127482}
+    - target: {fileID: 3500619745887648026, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500619745887648026, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4969211576192581384, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
       propertyPath: m_Name
       value: gameOverWin_Stats
@@ -538,8 +546,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1954127478}
     - target: {fileID: 7807895799435095722, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 953
+      propertyPath: m_AnchoredPosition.y
+      value: -112
       objectReference: {fileID: 0}
     - target: {fileID: 8297792962672627820, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
