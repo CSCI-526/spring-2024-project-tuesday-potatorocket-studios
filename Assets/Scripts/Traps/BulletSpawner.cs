@@ -64,7 +64,7 @@ public class BulletSpawner : MonoBehaviour
             {
                 angle -= 360f;
             }
-            if ((angle =< 0f) || (angle > 180f))
+            if ((angle <= 0f) || (angle > 180f))
             {
                 direction = direction * -1f;
             }
