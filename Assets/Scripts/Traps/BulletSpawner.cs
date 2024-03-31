@@ -53,7 +53,7 @@ public class BulletSpawner : MonoBehaviour
             {
                 angle -= 360f;
             }
-            if ((angle < -180f) || (angle > 0f))
+            if ((angle < -180f) || (angle >= 0f))
             {
                 direction = direction * -1f;
             }
@@ -99,6 +99,9 @@ public class BulletSpawner : MonoBehaviour
 
         }
         if (spawnerType != SpawnerType.Track) {
+            Debug.Log("angle: " + angle);
+            Debug.Log("direction: " + direction);
+            Debug.Log("Time.deltaTime: " + Time.deltaTime);
             transform.Rotate(0, 0, rotationSpeed * direction * Time.deltaTime);
         }
 
