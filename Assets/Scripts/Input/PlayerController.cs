@@ -1,16 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
-
     private PlayerControls playerControls;
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -67,7 +63,6 @@ public class PlayerController : MonoBehaviour
         }
 
         coinText.text = "Coins: " + GlobalValues.coins.ToString();
-
     }
 
     private void SavePlayerLocation()
@@ -119,10 +114,9 @@ public class PlayerController : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D theCollision)
     {
-        if (theCollision.gameObject.layer == LayerMask.NameToLayer("Ground")) {
-            if (theCollision.contacts[0].normal.y == 1) {
-                isGrounded = true;
-            }
+        if (theCollision.gameObject.layer == LayerMask.NameToLayer("Ground") && theCollision.relativeVelocity.y > 0)
+        {
+            isGrounded = true;
         }
 
         if (!invincible && (isShielded == false))
