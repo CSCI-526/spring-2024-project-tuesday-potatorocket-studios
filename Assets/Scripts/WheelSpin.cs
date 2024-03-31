@@ -30,12 +30,12 @@ public class WheelSpin : MonoBehaviour
 
     public GameObject Shield;
     private static string[,] WHEEL_ITEMS = new string[7, 8] {{"NOWIND","NOWIND","NOWIND", "NOWIND","NOWIND","NOWIND", "NOWIND","NOWIND"}, // Tutorial
-                                                             {"NOWIND","NOWIND","ADDBULLET", "SHIELD","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
-                                                             {"NOWIND","NOWIND","ADDBULLET", "SHIELD","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
-                                                             {"NOWIND","NOWIND","ADDBULLET", "SHIELD","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
-                                                             {"NOWIND","NOWIND","ADDBULLET", "SHIELD","COINS","REMOVEBULLET", "SWORD","JUMP"},
-                                                             {"NOWIND","NOWIND","ADDBULLET", "SHIELD","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
-                                                             {"NOWIND","NOWIND","ADDBULLET", "SHIELD","COINS","REMOVEBULLET", "ADDBULLET","SWORD"}};
+                                                             {"NOWIND","SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
+                                                             {"NOWIND", "SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
+                                                             {"NOWIND", "SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
+                                                             {"NOWIND", "SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","SWORD"},
+                                                             {"NOWIND", "SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
+                                                             {"NOWIND", "SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","SWORD"}};
     private void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -136,8 +136,8 @@ public class WheelSpin : MonoBehaviour
         }
         else if (wheelItem.Equals("COINS"))
         {
-            GlobalValues.coins += 10;
-            wheelText.text = "Got 10 coins!";
+            GlobalValues.coins += 2;
+            wheelText.text = "Got 2 coins!";
         }
         else if (wheelItem.Equals("REMOVEBULLET"))
         {

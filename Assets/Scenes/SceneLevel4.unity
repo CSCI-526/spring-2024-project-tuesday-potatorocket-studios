@@ -2036,6 +2036,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ProceedToNextLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 7757395878681280990, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 255cf9d6f08f34a54abaa3fb1b0d70c3, type: 3}
     - target: {fileID: 7807895799435095722, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -112
