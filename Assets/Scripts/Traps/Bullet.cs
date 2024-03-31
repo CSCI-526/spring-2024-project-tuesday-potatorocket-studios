@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -26,7 +23,7 @@ public class Bullet : MonoBehaviour
     {
         if (timer > bulletLife)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         else
         {
@@ -45,25 +42,17 @@ public class Bullet : MonoBehaviour
     {
         if (collision.collider.tag == "border")
         {
-            Destroy(this.gameObject); // Destroy the bullet when it hits a border
+            Destroy(gameObject); // Destroy the bullet when it hits a border
         }
-
-        // if (collision.collider.tag == "EnemyBullet")
-        // {
-        //     //Destroy(this.gameObject); // Destroy the bullet when it hits another bullet
-        //     continue
-        // }
-
-
 
         if (collision.gameObject.layer == 3)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         if (collision.collider.tag == "Player")
         {
 
-            Destroy(this.gameObject); // Also destroy the bullet
+            Destroy(gameObject); // Also destroy the bullet
         }
 
     }
