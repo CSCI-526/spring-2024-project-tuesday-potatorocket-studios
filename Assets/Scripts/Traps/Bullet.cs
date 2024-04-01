@@ -54,6 +54,9 @@ public class Bullet : MonoBehaviour
 
             Destroy(gameObject); // Also destroy the bullet
         }
-
+        if (collision.collider.tag == "Shield")
+        {
+            Destroy(gameObject); // Destroy the bullet when it hits a shield
+        }
     }
 }
