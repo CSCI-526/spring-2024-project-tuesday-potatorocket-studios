@@ -34,6 +34,10 @@ public class GameOver : MonoBehaviour
             gameOverPanel.SetActive(true);
             gameManagerScript.GetComponent<Analytics>().PublishData();
 
+
+            gameManagerScript.GetComponent<Analytics>().buffsAnalytics.win = 0;
+            gameManagerScript.GetComponent<Analytics>().PublishBuffsAnalytics();
+
             float leftTimerValue = Mathf.Ceil(gameManagerScript.sliderTimer);
             int coinCount = GlobalValues.coins;
             // Access trapsData from analyticsScript

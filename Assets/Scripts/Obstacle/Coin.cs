@@ -37,26 +37,29 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (arrowNum == 1 && Input.GetKeyDown(proceedKeycode))
+        if (GlobalValues.level == 0)
         {
-            tutorialText.text = "Coins carry over and are used to spin the wheel.\n\nPress Enter to continue.";
-            arrowHead.transform.position = coinTextPos;
-            arrowHead.transform.eulerAngles = new Vector3(0, 0, 180 - Vector2.Angle(tutorialTextPos, coinTextPos));
-            arrowBodyRenderer.SetPosition(0, tutorialTextPos);
-            arrowBodyRenderer.SetPosition(1, coinTextPos);
-            arrowNum += 1;
-        }
-        else if (arrowNum == 2 && Input.GetKeyDown(proceedKeycode))
-        {
-            tutorialText.text = "If you get all the coins, the timer speeds up!\n\nPress Enter to continue.";
-            arrowNum += 1;
-        }
-        else if (arrowNum == 3 && Input.GetKeyDown(proceedKeycode))
-        {
-            arrowBodyRenderer.positionCount = 0;
-            arrow.SetActive(false);
-            tutorialText.text = "Good luck!";
-            playerScript.StartLoadMenuSceneCoroutine(2.0f);
+            if (arrowNum == 1 && Input.GetKeyDown(proceedKeycode))
+            {
+                tutorialText.text = "Coins carry over and are used to spin the wheel.\n\nPress Enter to continue.";
+                arrowHead.transform.position = coinTextPos;
+                arrowHead.transform.eulerAngles = new Vector3(0, 0, 180 - Vector2.Angle(tutorialTextPos, coinTextPos));
+                arrowBodyRenderer.SetPosition(0, tutorialTextPos);
+                arrowBodyRenderer.SetPosition(1, coinTextPos);
+                arrowNum += 1;
+            }
+            else if (arrowNum == 2 && Input.GetKeyDown(proceedKeycode))
+            {
+                tutorialText.text = "If you get all the coins, the timer speeds up!\n\nPress Enter to continue.";
+                arrowNum += 1;
+            }
+            else if (arrowNum == 3 && Input.GetKeyDown(proceedKeycode))
+            {
+                arrowBodyRenderer.positionCount = 0;
+                arrow.SetActive(false);
+                tutorialText.text = "Good luck!";
+                playerScript.StartLoadMenuSceneCoroutine(2.0f);
+            }
         }
     }
 
