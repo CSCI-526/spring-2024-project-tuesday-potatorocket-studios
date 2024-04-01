@@ -2278,6 +2278,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5111919107281488144, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 251162292}
+    - target: {fileID: 5111919107281488144, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: mainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 5322643667518912781, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
