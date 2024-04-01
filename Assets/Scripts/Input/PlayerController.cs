@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D theCollision)
     {
-        if (theCollision.gameObject.layer == LayerMask.NameToLayer("Ground") && theCollision.relativeVelocity.y > 0)
+        if (theCollision.gameObject.layer == LayerMask.NameToLayer("Ground") && theCollision.contacts[0].point.y < transform.position.y)
         {
             isGrounded = true;
         }
