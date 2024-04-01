@@ -51,6 +51,7 @@ public class Analytics : MonoBehaviour
     public Traps trapsData;
     
     public bool flag;
+    public bool buffFlag;
     // Public getter for trapsData
     public Traps TrapsData => trapsData;
     public WheelAnalytics wheelAnalytics;
@@ -68,6 +69,7 @@ public class Analytics : MonoBehaviour
         playerLocationAnalytics = new PlayerLocationAnalytics{ level = GlobalValues.level, guid = GlobalValues.guid };
         buffsAnalytics = new BuffsAnalytics{ level = GlobalValues.level, guid = GlobalValues.guid };
         flag = true;
+        buffFlag = true;
     }
 
     // Update is called once per frame
@@ -89,7 +91,12 @@ public class Analytics : MonoBehaviour
     }
     
     public void PublishBuffsAnalytics() {
-        RestClient.Post("https://rogueroulette-efcf5-default-rtdb.firebaseio.com/BuffsAnalytics/.json", JsonUtility.ToJson(buffsAnalytics));
+        if (buffFlag)
+        {
+            RestClient.Post("https://rogueroulette-efcf5-default-rtdb.firebaseio.com/BuffsAnalytics/.json",
+                JsonUtility.ToJson(buffsAnalytics));
+            buffFlag = false;
+        }
     }
 
     public void PublishData() {
