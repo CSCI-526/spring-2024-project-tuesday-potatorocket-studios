@@ -27,9 +27,9 @@ public class WheelSpin : MonoBehaviour
     private TextMeshProUGUI tutorialTextObject;
 
     private float originalJumpForce;
-    
+
     private Analytics analyticsScript;
-    
+
     public GameObject Shield;
     private static string[,] WHEEL_ITEMS = new string[7, 8] {{"NOWIND","NOWIND","NOWIND", "NOWIND","NOWIND","NOWIND", "NOWIND","NOWIND"}, // Tutorial
                                                              {"NOWIND","SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
@@ -112,7 +112,10 @@ public class WheelSpin : MonoBehaviour
                 wheelText.text = "Yay! Temporarily removed wind";
                 analyticsScript.buffsAnalytics.removeWind += 1;
                 wind.SetActive(false);
-                StartCoroutine(activateWind(10, wind));
+                if (GlobalValues.level != 0)
+                {
+                    StartCoroutine(activateWind(10, wind));
+                }
             }
 
             if (GlobalValues.level == 0 && tutorialTextObject != null)
