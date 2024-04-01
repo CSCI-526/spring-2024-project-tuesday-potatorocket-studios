@@ -12,6 +12,7 @@ public class CircleEnemy : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        lifespan = GlobalValues.level == 4 ? 13 : 10;
     }
 
     // Update is called once per frame

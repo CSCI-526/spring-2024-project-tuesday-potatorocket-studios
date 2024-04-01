@@ -14,6 +14,7 @@ public class Coin : MonoBehaviour
     private Vector3 coinTextPos;
     private Vector3 timerTextPos;
     private bool speedTutorialAlreadyShown = false;
+    private bool carryOverTutorialAlreadyShown = false;
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +62,7 @@ public class Coin : MonoBehaviour
                 StartCoroutine(hideArrow());
                 speedTutorialAlreadyShown = true;
             }
-            else if (GlobalValues.level != 1 && GlobalValues.level != 0 && transform.localScale != new Vector3(0, 0, 0) && GlobalValues.coinsFromLastLevel > 0)
+            else if (!carryOverTutorialAlreadyShown && GlobalValues.level != 1 && GlobalValues.level != 0 && transform.localScale != new Vector3(0, 0, 0) && GlobalValues.coinsFromLastLevel > 0)
             {
                 tutorialText.text = "Coins carry over to the subsequent rooms!";
                 arrowHead.transform.SetPositionAndRotation(coinTextPos, Quaternion.Euler(0, 0, 180 - Vector2.Angle(tutorialTextPos, coinTextPos)));
@@ -69,6 +70,7 @@ public class Coin : MonoBehaviour
                 arrowBodyRenderer.SetPosition(1, coinTextPos);
                 GlobalValues.arrowNum += 1;
                 arrow.SetActive(true);
+                carryOverTutorialAlreadyShown = true;
                 StartCoroutine(hideArrow());
             }
         }

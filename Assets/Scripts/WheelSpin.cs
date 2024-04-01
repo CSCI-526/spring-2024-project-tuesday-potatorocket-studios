@@ -175,8 +175,8 @@ public class WheelSpin : MonoBehaviour
         {
             analyticsScript.buffsAnalytics.jump += 1;
             originalJumpForce = Player.GetComponent<PlayerController>().jumpForce;
-            Player.GetComponent<PlayerController>().jumpForce *= 2f;
-            StartCoroutine(jumpCooldown(5));
+            Player.GetComponent<PlayerController>().jumpForce *= 1.5f;
+            StartCoroutine(jumpCooldown(7));
             wheelText.text = "Increased jump temporarily!";
         }
         StartCoroutine(MakeTextDisappear());
