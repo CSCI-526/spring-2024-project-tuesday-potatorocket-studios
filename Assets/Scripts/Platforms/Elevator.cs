@@ -26,7 +26,7 @@ public class Elevator : MonoBehaviour
         initialLocation = this.transform.position.y;
         direction = Vector3.up;
         wait = false;
-        waitTime = 3;
+        //waitTime = 1;
     }
 
     // Update is called once per frame
