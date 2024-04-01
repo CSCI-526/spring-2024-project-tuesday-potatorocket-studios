@@ -1,27 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using System;
 using TMPro;
 
 public class GameOver : MonoBehaviour
 {
     public GameObject gameOverPanel;
-    private TimerScript gameManagerScript;
     public TextMeshProUGUI gameOverLose;
-    private PlayerController playerScript;
     private Analytics analyticsScript;
 
     void Start()
     {
-
         GameObject gameManagerObj = GameObject.Find("GameManager");
-        gameManagerScript = gameManagerObj.GetComponent<TimerScript>();
-
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        playerScript = playerObj.GetComponent<PlayerController>();
         analyticsScript = gameManagerObj.GetComponent<Analytics>();
     }
 
@@ -32,16 +21,13 @@ public class GameOver : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Player") == null && levelProgress == null)
         {
             gameOverPanel.SetActive(true);
-            gameManagerScript.GetComponent<Analytics>().PublishData();
+            analyticsScript.PublishData();
 
 
-            gameManagerScript.GetComponent<Analytics>().buffsAnalytics.win = 0;
-            gameManagerScript.GetComponent<Analytics>().PublishBuffsAnalytics();
+            analyticsScript.buffsAnalytics.win = 0;
+            analyticsScript.PublishBuffsAnalytics();
 
-            float leftTimerValue = Mathf.Ceil(gameManagerScript.sliderTimer);
-            int coinCount = GlobalValues.coins;
             // Access trapsData from analyticsScript
-            Traps trapsData = analyticsScript.TrapsData;
             Time.timeScale = 0;
             //timerText.text = "Time Left:" + leftTimerValue.ToString() + "s\nCoin Count:" + coinCount.ToString();
             //gameOverLose.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
@@ -51,6 +37,8 @@ public class GameOver : MonoBehaviour
     public void Restart()
     {
         GlobalValues.coins = 0;
+        GlobalValues.coinsCollectedAtCurrentLevel = 0;
+        GlobalValues.speedOfTime = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

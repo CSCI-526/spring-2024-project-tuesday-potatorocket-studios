@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Threading;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,7 +11,6 @@ public class TimerScript : MonoBehaviour
     public float sliderTimer;
     private bool timerIsRunning = false;
     private GameObject levelProgress;
-   // public TextMeshProUGUI gameOverWin;
     private GameObject player;
     private PlayerController playerScript;
     private GameObject gameController;
@@ -92,14 +88,11 @@ public class TimerScript : MonoBehaviour
 
             if (sliderTimer <= 0)
             {
-                Traps trapsData = analyticsScript.TrapsData;
                 Time.timeScale = 0;
                 levelProgress.SetActive(true);
                 analyticsScript.PublishData();
                 analyticsScript.buffsAnalytics.win = 1;
                 analyticsScript.PublishBuffsAnalytics();
-                float leftTimerValue = 0;
-                int coinCount = GlobalValues.coins;
                // gameOverWin.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
             }
             slider.value = sliderTimer;
@@ -112,6 +105,7 @@ public class TimerScript : MonoBehaviour
         GlobalValues.level++;
         GlobalValues.coinsFromLastLevel = GlobalValues.coins;
         GlobalValues.speedOfTime = 1;
+        GlobalValues.coinsCollectedAtCurrentLevel = 0;
         SceneManager.LoadScene("SceneLevel" + GlobalValues.level.ToString());
     }
 }

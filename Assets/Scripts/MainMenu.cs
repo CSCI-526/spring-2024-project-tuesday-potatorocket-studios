@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
     {
         GlobalValues.level = 1;
         GlobalValues.coins = 0;
+        GlobalValues.coinsFromLastLevel = 0;
+        GlobalValues.coinsCollectedAtCurrentLevel = 0;
         SceneManager.LoadScene("SceneLevel1");
     }
 

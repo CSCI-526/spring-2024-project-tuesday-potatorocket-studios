@@ -23,19 +23,12 @@ public class PlayerController : MonoBehaviour
     private float typeTwoTrapDamage = 15;
     private float typeThreeTrapDamage = 20;
     private GameObject gameManager;
-    private int invincibleFlag = 0;
-
-
     public bool isShielded;
-
     public TextMeshProUGUI coinText;
     [SerializeField] public TextMeshProUGUI tutorialText;
-
-
     [SerializeField] public float moveSpeed;
     [SerializeField] public float jumpForce;
     private int numCoins;
-
 
     // Start is called before the first frame update
     void Start()
@@ -82,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GlobalValues.coins - GlobalValues.coinsFromLastLevel == numCoins)
+        if (GlobalValues.level != 0 && GlobalValues.coinsCollectedAtCurrentLevel == numCoins)
         {
             GlobalValues.speedOfTime = 2f;
         }

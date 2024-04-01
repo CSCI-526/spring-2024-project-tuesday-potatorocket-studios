@@ -6,8 +6,9 @@ public static class GlobalValues
 {
     public static int coins = 0;
     public static int level = 0;
-
+    public static int arrowNum = 0;
     public static string guid = null;
     public static float speedOfTime = 1;
     public static int coinsFromLastLevel = 0;
+    public static int coinsCollectedAtCurrentLevel = 0;
 }
