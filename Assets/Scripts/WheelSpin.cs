@@ -27,7 +27,9 @@ public class WheelSpin : MonoBehaviour
     private TextMeshProUGUI tutorialTextObject;
 
     private float originalJumpForce;
-
+    
+    private Analytics analyticsScript;
+    
     public GameObject Shield;
     private static string[,] WHEEL_ITEMS = new string[7, 8] {{"NOWIND","NOWIND","NOWIND", "NOWIND","NOWIND","NOWIND", "NOWIND","NOWIND"}, // Tutorial
                                                              {"NOWIND","SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
@@ -49,6 +51,7 @@ public class WheelSpin : MonoBehaviour
         bossBullet = 0;
         tutorialTextObject = GameObject.Find("TutorialText").GetComponent<TextMeshProUGUI>();
         StartCoroutine(MakeTextDisappear());
+        analyticsScript = gameManager.GetComponent<Analytics>();
     }
 
     private void Update()
@@ -107,6 +110,7 @@ public class WheelSpin : MonoBehaviour
             if (wind != null)
             {
                 wheelText.text = "Yay! Temporarily removed wind";
+                analyticsScript.buffsAnalytics.removeWind += 1;
                 wind.SetActive(false);
                 StartCoroutine(activateWind(10, wind));
             }
@@ -131,6 +135,7 @@ public class WheelSpin : MonoBehaviour
         }
         else if (wheelItem.Equals("SHIELD"))
         {
+            analyticsScript.buffsAnalytics.shield += 1;
             activateShield();
             wheelText.text = "Got a shield!";
         }
@@ -138,12 +143,14 @@ public class WheelSpin : MonoBehaviour
         {
             GlobalValues.coins += 2;
             wheelText.text = "Got 2 coins!";
+            analyticsScript.buffsAnalytics.coins += 1;
         }
         else if (wheelItem.Equals("REMOVEBULLET"))
         {
             BulletSpawner[] spin = FindObjectsOfType<BulletSpawner>();
             if (spin != null)
             {
+                analyticsScript.buffsAnalytics.removeBullet += 1;
                 foreach (BulletSpawner s in spin)
                 {
                     s.cooldown = 0;
@@ -154,6 +161,7 @@ public class WheelSpin : MonoBehaviour
         }
         else if (wheelItem.Equals("SWORD"))
         {
+            analyticsScript.buffsAnalytics.sword += 1;
             if (GameObject.FindWithTag("Sword") == null)
             {
                 Instantiate(sword, Player.transform.position, Quaternion.identity);
@@ -162,6 +170,7 @@ public class WheelSpin : MonoBehaviour
         }
         else if (wheelItem.Equals("JUMP"))
         {
+            analyticsScript.buffsAnalytics.jump += 1;
             originalJumpForce = Player.GetComponent<PlayerController>().jumpForce;
             Player.GetComponent<PlayerController>().jumpForce *= 2f;
             StartCoroutine(jumpCooldown(5));

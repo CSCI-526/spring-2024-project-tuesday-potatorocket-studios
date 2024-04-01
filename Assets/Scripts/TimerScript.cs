@@ -96,6 +96,8 @@ public class TimerScript : MonoBehaviour
                 Time.timeScale = 0;
                 levelProgress.SetActive(true);
                 analyticsScript.PublishData();
+                analyticsScript.buffsAnalytics.win = 1;
+                analyticsScript.PublishBuffsAnalytics();
                 float leftTimerValue = 0;
                 int coinCount = GlobalValues.coins;
                // gameOverWin.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
