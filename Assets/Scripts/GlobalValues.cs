@@ -11,4 +11,6 @@ public static class GlobalValues
     public static float speedOfTime = 1;
     public static int coinsFromLastLevel = 0;
     public static int coinsCollectedAtCurrentLevel = 0;
+    public static bool speedTutorialAlreadyShown = false;
+    public static bool carryOverTutorialAlreadyShown = false;
 }

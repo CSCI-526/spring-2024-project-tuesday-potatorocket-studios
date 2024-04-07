@@ -7,14 +7,11 @@ public class Coin : MonoBehaviour
     public TMPro.TextMeshProUGUI tutorialText;
     private PlayerController playerScript;
     public GameObject arrow;
-    public GameObject arrowBody;
-    public GameObject arrowHead;
-    private LineRenderer arrowBodyRenderer;
+
     private Vector3 tutorialTextPos;
     private Vector3 coinTextPos;
     private Vector3 timerTextPos;
-    private bool speedTutorialAlreadyShown = false;
-    private bool carryOverTutorialAlreadyShown = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +20,6 @@ public class Coin : MonoBehaviour
         playerScript = playerObj.GetComponent<PlayerController>();
         if (arrow)
         {
-            arrowBodyRenderer = arrowBody.GetComponent<LineRenderer>();
-            arrowBodyRenderer.startWidth = 0.13f;
-            arrowBodyRenderer.endWidth = 0.13f;
-            arrowBodyRenderer.startColor = Color.white;
-            arrowBodyRenderer.endColor = Color.white;
             arrow.SetActive(false);
             timerTextPos = GameObject.Find("TimerText").transform.position + new Vector3(0, -1, 0);
             coinTextPos = GameObject.Find("CoinUI").transform.position - new Vector3(1, 1, 0);
@@ -38,39 +30,46 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(GlobalValues.arrowNum);
         if (arrow && !arrow.activeSelf && GlobalValues.arrowNum < 4)
         {
             if (GlobalValues.arrowNum == 1 && GlobalValues.level != 0 && GlobalValues.coins == 1)
             {
                 tutorialText.text = "Use coins to spin the wheel";
-                arrowHead.transform.SetPositionAndRotation(coinTextPos, Quaternion.Euler(0, 0, 180 - Vector2.Angle(tutorialTextPos, coinTextPos)));
-                arrowBodyRenderer.SetPosition(0, tutorialTextPos);
-                arrowBodyRenderer.SetPosition(1, coinTextPos);
+                 
+                arrow.transform.position = coinTextPos- new Vector3(0, 1, 0);
+
                 GlobalValues.arrowNum += 1;
+            
                 arrow.SetActive(true);
                 StartCoroutine(hideArrow());
             }
-            else if (GlobalValues.speedOfTime == 2 && !speedTutorialAlreadyShown)
-            {
+            else if (GlobalValues.speedOfTime == 2 && !GlobalValues.speedTutorialAlreadyShown)
+            {   
+               
                 tutorialText.text = "If you get all the coins in a room, the timer speeds up!";
-                arrowHead.transform.SetPositionAndRotation(timerTextPos, Quaternion.Euler(0, 0, 0));
-                arrowBodyRenderer.SetPosition(0, tutorialTextPos);
-                arrowBodyRenderer.SetPosition(1, timerTextPos);
-                arrowHead.transform.Rotate(new Vector3(0, 0, Vector2.Angle(tutorialTextPos, timerTextPos)));
+               
+                arrow.transform.position = timerTextPos - new Vector3(0, 1, 0);
+       
                 GlobalValues.arrowNum += 1;
+          
                 arrow.SetActive(true);
                 StartCoroutine(hideArrow());
-                speedTutorialAlreadyShown = true;
+                GlobalValues.speedTutorialAlreadyShown = true;
+                
             }
-            else if (!carryOverTutorialAlreadyShown && GlobalValues.level != 1 && GlobalValues.level != 0 && transform.localScale != new Vector3(0, 0, 0) && GlobalValues.coinsFromLastLevel > 0)
+            else if (!GlobalValues.carryOverTutorialAlreadyShown && GlobalValues.level != 1 && GlobalValues.level != 0 && transform.localScale != new Vector3(0, 0, 0) && GlobalValues.coinsFromLastLevel > 0)
             {
+            
                 tutorialText.text = "Coins carry over to the subsequent rooms!";
-                arrowHead.transform.SetPositionAndRotation(coinTextPos, Quaternion.Euler(0, 0, 180 - Vector2.Angle(tutorialTextPos, coinTextPos)));
-                arrowBodyRenderer.SetPosition(0, tutorialTextPos);
-                arrowBodyRenderer.SetPosition(1, coinTextPos);
+          
+                arrow.transform.position = coinTextPos - new Vector3(0, 1, 0);
+                
                 GlobalValues.arrowNum += 1;
+         
+                
                 arrow.SetActive(true);
-                carryOverTutorialAlreadyShown = true;
+                GlobalValues.carryOverTutorialAlreadyShown = true;
                 StartCoroutine(hideArrow());
             }
         }
@@ -100,10 +99,9 @@ public class Coin : MonoBehaviour
             {
                 tutorialText.text = "Good job! Survive the rooms until the timer runs out! Good luck!";
                 arrow.SetActive(true);
-                arrowHead.transform.position = timerTextPos;
-                arrowBodyRenderer.SetPosition(0, tutorialTextPos);
-                arrowBodyRenderer.SetPosition(1, timerTextPos);
-                arrowHead.transform.Rotate(new Vector3(0, 0, Vector2.Angle(tutorialTextPos, timerTextPos)));
+                arrow.transform.position = timerTextPos- new Vector3(0, 1, 0);
+               
+
                 GlobalValues.arrowNum += 1;
                 gameObject.transform.localScale = new Vector3(0, 0, 0);
                 playerScript.StartLoadMenuSceneCoroutine(2.5f);
