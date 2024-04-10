@@ -64,7 +64,7 @@ public class TimerScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && wheelModal != null)
+        if (Input.GetKeyDown(KeyCode.Tab) && wheelModal != null)
         {
             wheelModal.SetActive(!wheelModal.activeSelf);
             timerIsRunning = !timerIsRunning;
