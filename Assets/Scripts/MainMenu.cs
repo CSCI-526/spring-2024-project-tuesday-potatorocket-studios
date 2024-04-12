@@ -22,7 +22,6 @@ public class MainMenu : MonoBehaviour
 
     public void SelectLevel()
     {
-        MandatoryTutorial.levelSelectPin.SetActive(true);
-        MandatoryTutorial.levelSelectPin.GetComponent<TMPro.TMP_InputField>().ActivateInputField();
+        SceneManager.LoadScene("LevelSelectScene");
     }
 }

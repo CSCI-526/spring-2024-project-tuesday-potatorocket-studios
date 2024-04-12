@@ -104,7 +104,7 @@ public class Coin : MonoBehaviour
 
                 GlobalValues.arrowNum += 1;
                 gameObject.transform.localScale = new Vector3(0, 0, 0);
-                playerScript.StartLoadMenuSceneCoroutine(2.5f);
+                playerScript.StartLoadMenuSceneCoroutine(4f);
             }
         }
     }
