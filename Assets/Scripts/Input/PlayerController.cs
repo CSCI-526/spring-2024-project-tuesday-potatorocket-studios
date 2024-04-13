@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Image healthBar;
     public float maxHealth = 100;
     public float currentHealth;
+    public float defense;
     private float healthLerpSpeed = 3;
     private string typeOneTrapTag = "spike";
     private string typeTwoTrapTag = "EnemyBullet";
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
         healthBar = GameObject.FindWithTag("HealthBar").GetComponent<Image>();
         invincible = false;
         currentHealth = maxHealth;
+        defense = 0;
         coinText = GameObject.Find("CoinUI").GetComponent<TextMeshProUGUI>();
         gameManager = GameObject.Find("GameManager");
         InvokeRepeating("SavePlayerLocation", 0, 1);
@@ -118,20 +120,20 @@ public class PlayerController : MonoBehaviour
             if (theCollision.collider.tag == typeOneTrapTag)
             {
                 gameManager.GetComponent<Analytics>().updateTrapData("spike");
-                currentHealth -= typeOneTrapDamage;
+                currentHealth -= typeOneTrapDamage - defense;
                 invincible = true;
             }
             else if (theCollision.collider.tag == typeTwoTrapTag)
             {
                 gameManager.GetComponent<Analytics>().updateTrapData("enemybullet");
-                currentHealth -= typeTwoTrapDamage;
+                currentHealth -= typeTwoTrapDamage - defense;
                 invincible = true;
             }
             else if (theCollision.collider.tag == "Enemy")
             {
                 gameManager.GetComponent<Analytics>().updateTrapData("enemymonster");
                 Destroy(theCollision.gameObject);
-                currentHealth -= 25;
+                currentHealth -= (25 - defense);
                 invincible = true;
             }
 

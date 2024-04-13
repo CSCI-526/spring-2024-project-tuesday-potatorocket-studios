@@ -32,12 +32,12 @@ public class WheelSpin : MonoBehaviour
 
     public GameObject Shield;
     private static string[,] WHEEL_ITEMS = new string[7, 8] {{"NOWIND","NOWIND","NOWIND", "NOWIND","NOWIND","NOWIND", "NOWIND","NOWIND"}, // Tutorial
-                                                             {"NOWIND","SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
-                                                             {"NOWIND", "SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
-                                                             {"NOWIND", "SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
-                                                             {"NOWIND", "SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","SWORD"},
-                                                             {"NOWIND", "SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
-                                                             {"NOWIND", "SHIELD","ADDBULLET", "NOWIND","COINS","REMOVEBULLET", "ADDBULLET","SWORD"}};
+                                                             {"NOWIND","SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
+                                                             {"NOWIND", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
+                                                             {"NOWIND", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
+                                                             {"NOWIND", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","SWORD"},
+                                                             {"NOWIND", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
+                                                             {"NOWIND", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","SWORD"}};
     private void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -178,6 +178,19 @@ public class WheelSpin : MonoBehaviour
             Player.GetComponent<PlayerController>().jumpForce *= 1.5f;
             StartCoroutine(jumpCooldown(7));
             wheelText.text = "Increased jump temporarily!";
+        }
+        else if (wheelItem.Equals("DEFENSE"))
+        {
+            analyticsScript.buffsAnalytics.defense += 1;
+            Player.GetComponent<PlayerController>().defense += 3;
+            wheelText.text = "Increased defense!";
+        }
+        else if (wheelItem.Equals("HEAL"))
+        {
+            analyticsScript.buffsAnalytics.heal += 1;
+            Player.GetComponent<PlayerController>().maxHealth += 25;
+            Player.GetComponent<PlayerController>().currentHealth += 25;
+            wheelText.text = "Increased Health!";
         }
         StartCoroutine(MakeTextDisappear());
     }

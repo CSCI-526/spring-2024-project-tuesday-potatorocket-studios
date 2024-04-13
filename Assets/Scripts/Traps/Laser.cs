@@ -68,7 +68,8 @@ public class Laser : MonoBehaviour
             // Check for collisions with the player
             if (hit.collider != null && hit.collider.gameObject.tag == "Player")
             {
-                hit.collider.gameObject.GetComponent<PlayerController>().TakeDamage(20);
+                var def = hit.collider.gameObject.GetComponent<PlayerController>().defense;
+                hit.collider.gameObject.GetComponent<PlayerController>().TakeDamage(20 - def);
             }
             timer = 0;
         }

@@ -39,6 +39,8 @@ public class BuffsAnalytics {
     public int coins;
     public int removeWind;
     public int removeBullet;
+    public int defense;
+    public int heal;
     public int win;
 }
 
