@@ -78,7 +78,7 @@ public class TimerScript : MonoBehaviour
     {
         while (timerIsRunning)
         {
-            sliderTimer -= Time.deltaTime * GlobalValues.speedOfTime * GlobalValues.slowMoFactor;
+            sliderTimer -= Time.fixedDeltaTime * GlobalValues.speedOfTime * GlobalValues.slowMoFactor;
             yield return new WaitForSeconds(.001f);
 
             if (player == null)
