@@ -78,7 +78,7 @@ public class TimerScript : MonoBehaviour
     {
         while (timerIsRunning)
         {
-            sliderTimer -= Time.deltaTime * GlobalValues.speedOfTime;
+            sliderTimer -= Time.deltaTime * GlobalValues.speedOfTime * GlobalValues.slowMoFactor;
             yield return new WaitForSeconds(.001f);
 
             if (player == null)
@@ -93,6 +93,7 @@ public class TimerScript : MonoBehaviour
                 analyticsScript.PublishData();
                 analyticsScript.buffsAnalytics.win = 1;
                 analyticsScript.PublishBuffsAnalytics();
+                GlobalValues.slowMoFactor = 1;
                // gameOverWin.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
             }
             slider.value = sliderTimer;

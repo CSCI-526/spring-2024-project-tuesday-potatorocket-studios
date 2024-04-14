@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
     {
         if (GlobalValues.level != 0 && GlobalValues.coinsCollectedAtCurrentLevel == numCoins)
         {
-            GlobalValues.speedOfTime = 2f;
+            GlobalValues.speedOfTime *= 2;
         }
 
         if (currentHealth <= 0)

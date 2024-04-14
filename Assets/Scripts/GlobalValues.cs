@@ -13,4 +13,5 @@ public static class GlobalValues
     public static int coinsCollectedAtCurrentLevel = 0;
     public static bool speedTutorialAlreadyShown = false;
     public static bool carryOverTutorialAlreadyShown = false;
+    public static int slowMoFactor = 1;
 }

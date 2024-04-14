@@ -44,7 +44,7 @@ public class Coin : MonoBehaviour
                 arrow.SetActive(true);
                 StartCoroutine(hideArrow());
             }
-            else if (GlobalValues.speedOfTime == 2 && !GlobalValues.speedTutorialAlreadyShown)
+            else if (GlobalValues.speedOfTime == 2 && Time.timeScale == 1 && !GlobalValues.speedTutorialAlreadyShown)
             {   
                
                 tutorialText.text = "If you get all the coins in a room, the timer speeds up!";

@@ -36,8 +36,8 @@ public class WheelSpin : MonoBehaviour
                                                              {"NOWIND", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
                                                              {"NOWIND", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
                                                              {"NOWIND", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","SWORD"},
-                                                             {"NOWIND", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
-                                                             {"NOWIND", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","SWORD"}};
+                                                             {"SLOWMO", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
+                                                             {"SLOWMO", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","SWORD"}};
     private void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -122,6 +122,21 @@ public class WheelSpin : MonoBehaviour
             {
                 tutorialTextObject.text = "Nice! Now go for that coin!";
             }
+        }
+        else if (wheelItem.Equals("SLOWMO")) // Slow motion
+        {
+            PlayerController playerController = Player.GetComponent<PlayerController>();
+            Rigidbody2D rb = Player.GetComponent<Rigidbody2D>();
+            analyticsScript.buffsAnalytics.slowMo += 1;
+            wheelText.text = "Slow motion!";
+            GlobalValues.slowMoFactor = 2;
+            Time.timeScale /= GlobalValues.slowMoFactor;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            playerController.moveSpeed *= 2f;
+            playerController.jumpForce *= 2f;
+            rb.gravityScale *= 4f;
+            StartCoroutine(MakeTextDisappear());
+            StartCoroutine(DisableSlowMo(5, playerController, rb));
         }
         else if (wheelItem.Equals("ADDBULLET"))
         {
@@ -225,5 +240,16 @@ public class WheelSpin : MonoBehaviour
         Shield.SetActive(true);
         Shield.GetComponent<Shield>().timer = 0;
         Player.GetComponent<PlayerController>().isShielded = true;
+    }
+
+    IEnumerator DisableSlowMo(int time, PlayerController playerController, Rigidbody2D rb)
+    {
+        yield return new WaitForSeconds(time);
+        Time.timeScale *= GlobalValues.slowMoFactor;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        playerController.moveSpeed /= 2f;
+        playerController.jumpForce /= 2f;
+        rb.gravityScale /= 4f;
+        GlobalValues.slowMoFactor = 1;
     }
 }

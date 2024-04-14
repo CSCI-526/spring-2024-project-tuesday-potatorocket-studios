@@ -42,6 +42,7 @@ public class BuffsAnalytics {
     public int defense;
     public int heal;
     public int win;
+    public int slowMo;
 }
 
 public class Analytics : MonoBehaviour
