@@ -1788,6 +1788,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3505387624729217854, guid: c94bb81e5a2d94a1cac21449e6525b19, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3666506197507152572, guid: c94bb81e5a2d94a1cac21449e6525b19, type: 3}
       propertyPath: m_Color.a
       value: 0.078431375
@@ -1811,6 +1815,10 @@ PrefabInstance:
     - target: {fileID: 4519068743441256978, guid: c94bb81e5a2d94a1cac21449e6525b19, type: 3}
       propertyPath: m_TagString
       value: border
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560907571677424610, guid: c94bb81e5a2d94a1cac21449e6525b19, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4628676599688912424, guid: c94bb81e5a2d94a1cac21449e6525b19, type: 3}
       propertyPath: m_LocalScale.x

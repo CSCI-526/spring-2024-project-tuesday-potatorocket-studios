@@ -2386,8 +2386,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 274690968891980331, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 274690968891980331, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 874225846144047863, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4044341109393129829, guid: 4cb12d5dc7b9a4403ba0360cdd7b62eb, type: 3}
       propertyPath: jumpForce
