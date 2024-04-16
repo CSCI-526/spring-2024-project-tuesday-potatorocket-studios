@@ -32,12 +32,12 @@ public class WheelSpin : MonoBehaviour
 
     public GameObject Shield;
     private static string[,] WHEEL_ITEMS = new string[7, 8] {{"NOWIND","NOWIND","NOWIND", "NOWIND","NOWIND","NOWIND", "NOWIND","NOWIND"}, // Tutorial
-                                                             {"NOWIND","SHIELD","DEFENSE", "HEAL","COINS","SLOWMO", "ADDBULLET","JUMP"},
-                                                             {"NOWIND", "SLOWMO","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
-                                                             {"NOWIND", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","SLOWMO"},
-                                                             {"SLOWMO", "JUMP","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","SWORD"},
-                                                             {"SLOWMO", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","JUMP"},
-                                                             {"SLOWMO", "SHIELD","DEFENSE", "HEAL","COINS","REMOVEBULLET", "ADDBULLET","SWORD"}};
+                                                             {"NOWIND","SHIELD","ADDBULLET", "HEAL","COINS","SLOWMO", "DEFENSE","JUMP"},
+                                                             {"NOWIND", "SLOWMO","ADDBULLET", "HEAL","COINS","REMOVEBULLET", "DEFENSE","JUMP"},
+                                                             {"NOWIND", "SHIELD","ADDBULLET", "HEAL","COINS","REMOVEBULLET", "DEFENSE","SLOWMO"},
+                                                             {"SLOWMO", "JUMP","ADDBULLET", "HEAL","COINS","REMOVEBULLET", "DEFENSE","SWORD"},
+                                                             {"SLOWMO", "SHIELD","ADDBULLET", "HEAL","COINS","REMOVEBULLET", "DEFENSE","JUMP"},
+                                                             {"SLOWMO", "SHIELD","ADDBULLET", "HEAL","COINS","REMOVEBULLET", "DEFENSE","SWORD"}};
     private void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -103,6 +103,7 @@ public class WheelSpin : MonoBehaviour
     private void GetColor()
     {
         string wheelItem = WHEEL_ITEMS[GlobalValues.level, (int)transform.eulerAngles.z / 45];
+        // string wheelItem = "SLOWMO";
 
         if (wheelItem.Equals("NOWIND"))
         {
@@ -199,7 +200,7 @@ public class WheelSpin : MonoBehaviour
         {
             analyticsScript.buffsAnalytics.defense += 1;
             Player.GetComponent<PlayerController>().defense += 3;
-            wheelText.text = "Increased defense!";
+            wheelText.text = "Increased resilience to damage!";
         }
         else if (wheelItem.Equals("HEAL"))
         {
