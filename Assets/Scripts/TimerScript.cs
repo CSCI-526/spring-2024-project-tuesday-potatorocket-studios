@@ -32,10 +32,6 @@ public class TimerScript : MonoBehaviour
         if (sceneName == "Tutorial")
         {
             GlobalValues.level = 0;
-            SpriteRenderer red1 = GameObject.Find("Red1").GetComponent<SpriteRenderer>();
-            SpriteRenderer red2 = GameObject.Find("Red2").GetComponent<SpriteRenderer>();
-            red1.color = new Color(11/25, 255, 0, 1);
-            red2.color = new Color(11/25, 255, 0, 1);
             //playerScript.invincible = true;
         }
         else
