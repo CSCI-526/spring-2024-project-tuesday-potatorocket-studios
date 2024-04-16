@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour
 {
-    public Material material;
+    private Material material;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +15,7 @@ public class MainCamera : MonoBehaviour
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        if (GlobalValues.slowMoFactor == 2)
+        if (GlobalValues.slowMoFactor == 2 && gameObject.tag == "MainCamera")
             Graphics.Blit(source, destination, material);
         else
             Graphics.Blit(source, destination);
@@ -36,7 +36,7 @@ public class MainCamera : MonoBehaviour
         float targetaspect = 16.0f / 9.0f;
         float windowaspect = (float)Screen.width / Screen.height;
         float scaleheight = windowaspect / targetaspect;
-        Camera camera = GetComponent<Camera>();;
+        Camera camera = GetComponent<Camera>();
 
         if (scaleheight < 1.0f)
         {
