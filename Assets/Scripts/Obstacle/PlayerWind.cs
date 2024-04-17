@@ -25,7 +25,7 @@ public class PlayerWind : MonoBehaviour
     private void FixedUpdate()
     {
         foreach (GameObject go in winds) {
-            rb.AddForce(go.GetComponent<Wind>().direction * go.GetComponent<Wind>().strength);
+            rb.AddForce(go.GetComponent<Wind>().direction * go.GetComponent<Wind>().strength, ForceMode2D.Impulse);
         }
     }
 

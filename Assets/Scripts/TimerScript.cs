@@ -29,6 +29,7 @@ public class TimerScript : MonoBehaviour
         playerScript = player.GetComponent<PlayerController>();
         string sceneName = SceneManager.GetActiveScene().name;
         Time.timeScale = 1;
+        player.transform.localScale = new Vector3(1, 1, 1);
         if (sceneName == "Tutorial")
         {
             GlobalValues.level = 0;
@@ -41,6 +42,7 @@ public class TimerScript : MonoBehaviour
             {
                 wheelModal.SetActive(true);
                 Time.timeScale = 0;
+                player.transform.localScale = new Vector3(0, 0, 0);
             }
             else
             {
@@ -65,7 +67,8 @@ public class TimerScript : MonoBehaviour
             wheelModal.SetActive(!wheelModal.activeSelf);
             timerIsRunning = !timerIsRunning;
             StartCoroutine(UpdateTimer());
-            Time.timeScale = (Time.timeScale + 1) % 2;
+            Time.timeScale = Mathf.Ceil(Time.timeScale + 1) % 2 / GlobalValues.slowMoFactor;
+            player.transform.localScale = new Vector3(1, 1, 1) * ((player.transform.localScale.x + 1) % 2);
         }
     }
 
@@ -85,12 +88,13 @@ public class TimerScript : MonoBehaviour
             if (sliderTimer <= 0)
             {
                 Time.timeScale = 0;
+                player.transform.localScale = new Vector3(0, 0, 0);
                 levelProgress.SetActive(true);
                 analyticsScript.PublishData();
                 analyticsScript.buffsAnalytics.win = 1;
                 analyticsScript.PublishBuffsAnalytics();
                 GlobalValues.slowMoFactor = 1;
-               // gameOverWin.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
+                // gameOverWin.text = $"Time Left: {leftTimerValue}s\nCoin Count: {coinCount}\nSpikes damage: {trapsData.spike}\nLasers damage: {trapsData.laser}\nBullets damage: {trapsData.bullet}";
             }
             slider.value = sliderTimer;
         }
