@@ -123,17 +123,34 @@ public class PlayerController : MonoBehaviour
                 currentHealth -= typeOneTrapDamage - defense;
                 invincible = true;
             }
-            else if (theCollision.collider.tag == typeTwoTrapTag)
+            /*else if (theCollision.collider.tag == typeTwoTrapTag)
             {
                 gameManager.GetComponent<Analytics>().updateTrapData("enemybullet");
                 currentHealth -= typeTwoTrapDamage - defense;
                 invincible = true;
-            }
+            }*/
             else if (theCollision.collider.tag == "Enemy")
             {
                 gameManager.GetComponent<Analytics>().updateTrapData("enemymonster");
                 Destroy(theCollision.gameObject);
                 currentHealth -= (25 - defense);
+                invincible = true;
+            }
+
+            if (invincible)
+            {
+                StartCoroutine(MakeVulnerable());
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        if (!invincible && (isShielded == false))
+        {
+            if (collision.tag == typeTwoTrapTag)
+            {
+                gameManager.GetComponent<Analytics>().updateTrapData("enemybullet");
+                currentHealth -= typeTwoTrapDamage - defense;
                 invincible = true;
             }
 
