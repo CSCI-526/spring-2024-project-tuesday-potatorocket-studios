@@ -38,9 +38,9 @@ public class Bullet : MonoBehaviour
         float y = timer * speed * transform.right.y;
         return new Vector2(x + spawnPoint.x, y + spawnPoint.y);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.tag == "border")
+        if (collision.tag == "border")
         {
             Destroy(gameObject); // Destroy the bullet when it hits a border
         }
@@ -49,12 +49,12 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (collision.collider.tag == "Player")
+        if (collision.tag == "Player")
         {
 
             Destroy(gameObject); // Also destroy the bullet
         }
-        if (collision.collider.tag == "Shield")
+        if (collision.tag == "Shield")
         {
             Destroy(gameObject); // Destroy the bullet when it hits a shield
         }
