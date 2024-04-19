@@ -30,7 +30,7 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(GlobalValues.arrowNum);
+       // Debug.Log(GlobalValues.arrowNum);
         if (arrow && !arrow.activeSelf && GlobalValues.arrowNum < 4)
         {
             if (GlobalValues.arrowNum == 1 && GlobalValues.level != 0 && GlobalValues.coins == 1)
