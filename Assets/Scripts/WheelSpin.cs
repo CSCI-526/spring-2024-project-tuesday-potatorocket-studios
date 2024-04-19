@@ -102,8 +102,8 @@ public class WheelSpin : MonoBehaviour
     //public PlayerController playerController;
     private void GetColor()
     {
-        string wheelItem = WHEEL_ITEMS[GlobalValues.level, (int)transform.eulerAngles.z / 45];
-        // string wheelItem = "SLOWMO";
+        // string wheelItem = WHEEL_ITEMS[GlobalValues.level, (int)transform.eulerAngles.z / 45];
+        string wheelItem = "SWORD";
 
         if (wheelItem.Equals("NOWIND"))
         {
