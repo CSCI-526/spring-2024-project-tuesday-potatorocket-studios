@@ -26,7 +26,7 @@ public class SwordAnim : MonoBehaviour
             sword.SetActive(false);
         }
 
-        if (timer >= 1)
+        if (timer >= 0.3)
         {
             sword.SetActive(true);
             anim.Play("swordanimation", -1, 0f);
