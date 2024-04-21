@@ -69,7 +69,7 @@ public class Laser : MonoBehaviour
             if (hit.collider != null && hit.collider.gameObject.tag == "Player")
             {
                 var def = hit.collider.gameObject.GetComponent<PlayerController>().defense;
-                hit.collider.gameObject.GetComponent<PlayerController>().TakeDamage(20 - def);
+                hit.collider.gameObject.GetComponent<PlayerController>().TakeDamage(15 - def);
             }
             timer = 0;
         }
