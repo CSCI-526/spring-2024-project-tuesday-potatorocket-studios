@@ -174,11 +174,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edae50193fe0048229d2d49d82ba7f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCount: 0
+  invincible: 0
+  maxHealth: 100
+  currentHealth: 0
+  defense: 0
   isShielded: 0
   coinText: {fileID: 0}
-  moveSpeed: 5
-  jumpForce: 8
+  tutorialText: {fileID: 0}
+  moveSpeed: 7
+  jumpForce: 11
 --- !u!114 &1691501756827684032
 MonoBehaviour:
   m_ObjectHideFlags: 0
