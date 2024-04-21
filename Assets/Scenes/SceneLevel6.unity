@@ -2212,7 +2212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3500619745887648026, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
       propertyPath: m_fontStyle
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3500619745887648026, guid: cf2aafd92a5cb48f8a8aaae797ef5d5c, type: 3}
       propertyPath: m_fontSizeBase

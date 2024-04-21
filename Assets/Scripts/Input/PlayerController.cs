@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     //private string typeThreeTrapTag = "laser";
     private float typeOneTrapDamage = 10;
     private float typeTwoTrapDamage = 15;
-    private float typeThreeTrapDamage = 20;
+    private float typeThreeTrapDamage = 15;
     private GameObject gameManager;
     public bool isShielded;
     public TextMeshProUGUI coinText;
@@ -179,7 +179,7 @@ public class PlayerController : MonoBehaviour
         if (!invincible)
         {
             gameManager.GetComponent<Analytics>().updateTrapData("laser");
-            currentHealth -= typeThreeTrapDamage;
+            currentHealth -= damage;
             invincible = true;
 
             if (invincible)

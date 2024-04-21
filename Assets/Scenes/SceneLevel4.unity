@@ -233,12 +233,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3387617064031285110, guid: 8eb504392f020744d812da3d77f66560, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3387617064031285110, guid: 8eb504392f020744d812da3d77f66560, type: 3}
       propertyPath: cooldown
-      value: 0.3
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3387617064031285110, guid: 8eb504392f020744d812da3d77f66560, type: 3}
       propertyPath: firingRate
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4716674534037051196, guid: 8eb504392f020744d812da3d77f66560, type: 3}
       propertyPath: m_IsTrigger
@@ -1556,12 +1560,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3387617064031285110, guid: 8eb504392f020744d812da3d77f66560, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3387617064031285110, guid: 8eb504392f020744d812da3d77f66560, type: 3}
       propertyPath: cooldown
-      value: 0.3
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3387617064031285110, guid: 8eb504392f020744d812da3d77f66560, type: 3}
       propertyPath: firingRate
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4716674534037051196, guid: 8eb504392f020744d812da3d77f66560, type: 3}
       propertyPath: m_IsTrigger

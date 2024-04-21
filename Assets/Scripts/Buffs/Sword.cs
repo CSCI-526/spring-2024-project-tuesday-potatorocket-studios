@@ -60,6 +60,7 @@ public class Sword : MonoBehaviour
 
     private void LateUpdate()
     {
+        if(this != null && player != null)
         this.transform.position = player.transform.position;
     }
 
