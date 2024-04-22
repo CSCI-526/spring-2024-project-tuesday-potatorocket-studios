@@ -182,7 +182,7 @@ MonoBehaviour:
   coinText: {fileID: 0}
   tutorialText: {fileID: 0}
   moveSpeed: 7
-  jumpForce: 9
+  jumpForce: 10
 --- !u!114 &1691501756827684032
 MonoBehaviour:
   m_ObjectHideFlags: 0
