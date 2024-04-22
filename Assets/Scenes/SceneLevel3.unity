@@ -2928,7 +2928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3032162264367930142, guid: c94bb81e5a2d94a1cac21449e6525b19, type: 3}
       propertyPath: strength
-      value: 0.11
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 3032162264367930142, guid: c94bb81e5a2d94a1cac21449e6525b19, type: 3}
       propertyPath: direction.x
@@ -3184,7 +3184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7265705451050601794, guid: c94bb81e5a2d94a1cac21449e6525b19, type: 3}
       propertyPath: strength
-      value: 0.11
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 7265705451050601794, guid: c94bb81e5a2d94a1cac21449e6525b19, type: 3}
       propertyPath: direction.x

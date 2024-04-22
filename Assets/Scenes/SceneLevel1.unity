@@ -1023,7 +1023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153375829573257535, guid: 0acdf55a5673d16448b228d77cef337a, type: 3}
       propertyPath: strength
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7153375829573257535, guid: 0acdf55a5673d16448b228d77cef337a, type: 3}
       propertyPath: direction.x
@@ -1575,7 +1575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153375829573257535, guid: 0acdf55a5673d16448b228d77cef337a, type: 3}
       propertyPath: strength
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8913618844929771677, guid: 0acdf55a5673d16448b228d77cef337a, type: 3}
       propertyPath: m_Color.a
