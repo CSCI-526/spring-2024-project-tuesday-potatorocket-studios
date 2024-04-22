@@ -2138,6 +2138,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: border
       objectReference: {fileID: 0}
+    - target: {fileID: 813502593077244016, guid: c94bb81e5a2d94a1cac21449e6525b19, type: 3}
+      propertyPath: jumpForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1101960357935549563, guid: c94bb81e5a2d94a1cac21449e6525b19, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.44
