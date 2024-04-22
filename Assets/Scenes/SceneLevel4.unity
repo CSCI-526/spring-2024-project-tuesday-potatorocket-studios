@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8704501994784213286, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: firingRate
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -192,13 +196,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: DownBulletTrapV2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 302285604564691598, guid: 8eb504392f020744d812da3d77f66560, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1528584290661347527, guid: 8eb504392f020744d812da3d77f66560, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.5
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1528584290661347527, guid: 8eb504392f020744d812da3d77f66560, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.91
+      value: 7.88
       objectReference: {fileID: 0}
     - target: {fileID: 1528584290661347527, guid: 8eb504392f020744d812da3d77f66560, type: 3}
       propertyPath: m_LocalPosition.z
@@ -896,6 +904,67 @@ Transform:
   - {fileID: 2071937519}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &757964295
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6944653672828028851, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: m_Name
+      value: TrackingBulletTrapV2 Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344658370190233600, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344658370190233600, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344658370190233600, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344658370190233600, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344658370190233600, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344658370190233600, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344658370190233600, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344658370190233600, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344658370190233600, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344658370190233600, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704501994784213286, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
+      propertyPath: firingRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7c83fff5d275f324ea20b2b2482b8080, type: 3}
 --- !u!1001 &784203375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1519,9 +1588,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: DownBulletTrapV2 Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 302285604564691598, guid: 8eb504392f020744d812da3d77f66560, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1528584290661347527, guid: 8eb504392f020744d812da3d77f66560, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.941817
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 1528584290661347527, guid: 8eb504392f020744d812da3d77f66560, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2824,7 +2897,7 @@ PrefabInstance:
       objectReference: {fileID: 8695495297237001634, guid: 729f2bab19a0ada4e893a1089b27aaf4, type: 3}
     - target: {fileID: 7616970442203887722, guid: 9b6373a2cadca0d45878cba2e1673ab9, type: 3}
       propertyPath: spawnTimer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7704867230951127858, guid: 9b6373a2cadca0d45878cba2e1673ab9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2988,4 +3061,5 @@ SceneRoots:
   - {fileID: 94540272}
   - {fileID: 1555609772}
   - {fileID: 6962025}
+  - {fileID: 757964295}
   - {fileID: 670237147}
